@@ -2,6 +2,8 @@ package model.dao.Rent;
 
 import java.time.LocalDate;
 
+import model.Customer;
+import model.Product;
 import model.dao.JDBCUtil;
 
 public class RentDao {
@@ -33,6 +35,7 @@ public class RentDao {
             jdbcUtil.commit();      // 트랜잭션 commit 실행
             jdbcUtil.close();
         }
+        return result;
     }
     
     // 빌려진 물건 상태 변경 (대여됨)
@@ -50,10 +53,11 @@ public class RentDao {
             jdbcUtil.commit();      // 트랜잭션 commit 실행
             jdbcUtil.close();
         }
+        return result;
     }
     
     // 반납
-    public int modifyProductreturn(ProductDto product) {
+    public int modifyProductreturn(Product product) {
         int result = 0;
         String update = "UPDATE PRODUCT SET is_borrowed = 0 WHERE productId = ?";
         jdbcUtil.setSqlAndParameters(update, new Object[] {product.getProductId()});
@@ -67,6 +71,7 @@ public class RentDao {
             jdbcUtil.commit();      // 트랜잭션 commit 실행
             jdbcUtil.close();
         }
+        return result;
     }
     
     
