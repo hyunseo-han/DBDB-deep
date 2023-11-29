@@ -8,81 +8,99 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Product;
 
-public class ProductDAO {
-    private Connection conn;
 
-    // 생성자: 데이터베이스 연결
+public class ProductDAO {
+    private Connection conn; // 데이터베이스 연결을 위한 객체
+
     public ProductDAO(Connection conn) {
         this.conn = conn;
     }
 
-    // 제품 추가 (Create)
-    public void addProduct(Product product) throws SQLException {
-        String sql = "INSERT INTO product (product_id, name, price, description) VALUES (?, ?, ?, ?)";
+    // 상품 등록
+    public boolean addProduct(Product product) {
+        String sql = "INSERT INTO products (productId, regularPrice, rentalFee, description, deposit, rentalLocation, productPhoto, address, detailAddress, isBorrowed, customerId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, product.getId());
-            pstmt.setString(2, product.getName());
-            pstmt.setDouble(3, product.getPrice());
+            pstmt.setInt(1, product.getProductId());
+            pstmt.setDouble(2, product.getRegularPrice());
+            pstmt.setDouble(3, product.getRentalFee());
             pstmt.setString(4, product.getDescription());
-            pstmt.executeUpdate();
+            pstmt.setDouble(5, product.getDeposit());
+            pstmt.setString(6, product.getRentalLocation());
+            pstmt.setString(7, product.getProductPhoto());
+            pstmt.setString(8, product.getAddress());
+            pstmt.setString(9, product.getDetailAddress());
+            pstmt.setBoolean(10, product.isBorrowed());
+            pstmt.setInt(11, product.getCustomerId());
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
-    // 제품 ID로 검색 (Read)
-    public Product getProductById(String productId) throws SQLException {
-        String sql = "SELECT * FROM product WHERE product_id = ?";
+    // 상품 수정
+    public boolean updateProduct(Product product) {
+        String sql = "UPDATE products SET regularPrice = ?, rentalFee = ?, description = ?, deposit = ?, rentalLocation = ?, productPhoto = ?, address = ?, detailAddress = ?, isBorrowed = ?, customerId = ? WHERE productId = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, productId);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    return new Product(
-                            rs.getString("product_id"),
-                            rs.getString("name"),
-                            rs.getDouble("price"),
-                            rs.getString("description")
-                    );
-                }
-            }
+            pstmt.setDouble(1, product.getRegularPrice());
+            pstmt.setDouble(2, product.getRentalFee());
+            pstmt.setString(3, product.getDescription());
+            pstmt.setDouble(4, product.getDeposit());
+            pstmt.setString(5, product.getRentalLocation());
+            pstmt.setString(6, product.getProductPhoto());
+            pstmt.setString(7, product.getAddress());
+            pstmt.setString(8, product.getDetailAddress());
+            pstmt.setBoolean(9, product.isBorrowed());
+            pstmt.setInt(10, product.getCustomerId());
+            pstmt.setInt(11, product.getProductId());
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
-        return null;
     }
 
-    // 모든 제품 검색 (Read)
-    public List<Product> getAllProducts() throws SQLException {
-        List<Product> products = new ArrayList<>();
-        String sql = "SELECT * FROM product";
+
+    // 상품 삭제
+    public boolean deleteProduct(int productId) {
+        String sql = "DELETE FROM products WHERE id = ?";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, productId);
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // 상품 조회
+    public List<Product> getAllProducts() {
+        List<Product> productList = new ArrayList<>();
+        String sql = "SELECT * FROM products";
         try (PreparedStatement pstmt = conn.prepareStatement(sql);
              ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
-                products.add(new Product(
-                        rs.getString("product_id"),
-                        rs.getString("name"),
-                        rs.getDouble("price"),
-                        rs.getString("description")
-                ));
+                Product product = new Product(
+                    rs.getInt("productId"),
+                    rs.getDouble("regularPrice"),
+                    rs.getDouble("rentalFee"),
+                    rs.getString("description"),
+                    rs.getDouble("deposit"),
+                    rs.getString("rentalLocation"),
+                    rs.getString("productPhoto"),
+                    rs.getString("address"),
+                    rs.getString("detailAddress"),
+                    rs.getBoolean("isBorrowed"),
+                    rs.getInt("customerId")
+                );
+                productList.add(product);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return products;
+        return productList;
     }
 
-    // 제품 정보 업데이트 (Update)
-    public void updateProduct(Product product) throws SQLException {
-        String sql = "UPDATE product SET name = ?, price = ?, description = ? WHERE product_id = ?";
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, product.getName());
-            pstmt.setDouble(2, product.getPrice());
-            pstmt.setString(3, product.getDescription());
-            pstmt.setString(4, product.getId());
-            pstmt.executeUpdate();
-        }
-    }
-
-    // 제품 삭제 (Delete)
-    public void deleteProduct(String productId) throws SQLException {
-        String sql = "DELETE FROM product WHERE product_id = ?";
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, productId);
-            pstmt.executeUpdate();
-        }
-    }
 }
+
