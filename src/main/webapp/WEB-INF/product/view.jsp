@@ -16,8 +16,9 @@
 <body>
 	<div class="product-detail-container">
 		<div class="header">
-			<img class="back-icon"
-				src="<c:url value='/images/addProductForm/Vector.svg'/>" />
+			<a href="<c:url value='list'/>">
+                <img class="back-icon" src="<c:url value='/images/addProductForm/Vector.svg'/>" />
+            </a>
 			<div class="header-text">물품 상세 보기</div>
 			<img class="cart-icon"
 				src="<c:url value='/images/addProductForm/simple-line-icons_basket.svg'/>" />
@@ -57,10 +58,19 @@
 			<p class="category">ㄷㄷㄷㄷㄷㄷ</p>
 
 		</div>
-
-		<div class="product-buttons">
-			<button type="button">대여 날짜 선택하기</button>
-		</div>
+		<c:choose>
+		  <c:when test="${product.customerId == sessionScope.customerId}">
+				<div class="update-buttons">
+		            <button type="button">수정하기</button>
+		            <button type="button">삭제하기</button>
+		        </div>
+	        </c:when>
+	        <c:otherwise>	
+				<div class="product-buttons">
+					<button type="button">대여 날짜 선택하기</button>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </body>
 </html>

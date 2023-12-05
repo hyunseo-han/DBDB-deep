@@ -26,8 +26,9 @@ function setCategory(category) {
 </head>
 <body>
     <div class="header">
+        <a href="<c:url value='list'/>">
         <img class="back-icon"
-            src="<c:url value='/images/addProductForm/Vector.svg'/>" />
+            src="<c:url value='/images/addProductForm/Vector.svg'/>" /></a>
         <div class="header-text">물품 등록 하기</div>
         <img class="cart-icon"
             src="<c:url value='/images/addProductForm/simple-line-icons_basket.svg'/>" />

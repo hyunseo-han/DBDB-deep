@@ -106,3 +106,9 @@
   font-weight: 400;
   line-height: 19.5px; /* 150% */
 }
+
+.screen .go-addForm {
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 20px;
+}
