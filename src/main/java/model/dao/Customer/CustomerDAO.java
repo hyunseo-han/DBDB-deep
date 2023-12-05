@@ -101,7 +101,7 @@ public class CustomerDAO {
     }
     
     //customerId에 해당하는 회원이 존재하는지 판단
-    public boolean existingUser(String customerId) throws SQLException {
+    public boolean existingUser(int customerId) throws SQLException {
         String sql = "SELECT count(*) FROM CUSTOMER WHERE customerId=?";      
         jdbcUtil.setSqlAndParameters(sql, new Object[] {customerId});   
         try {

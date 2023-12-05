@@ -9,6 +9,7 @@ import controller.comm.CreateCommunityController;
 //import controller.user.*;
 //import controller.comm.*;
 import controller.product.*;
+import controller.user.LoginController;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -20,6 +21,8 @@ public class RequestMapping {
     	// 각 uri에 대응되는 controller 객체를 생성 및 저장
         
         // 물건 등록 url GET 요청
+        mappings.put("/user/loginForm", new ForwardController("/user/loginForm.jsp"));
+        mappings.put("/user/login", new LoginController());
         mappings.put("/product/addProductForm", new ForwardController("/product/addProductForm.jsp"));
         mappings.put("/product/create", new ProductController());
         
