@@ -19,38 +19,44 @@ public class RegisterUserController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-       	if (request.getMethod().equals("GET")) {	
-    		// GET request: 회원정보 등록 form 요청	
-    		log.debug("RegisterForm Request");
+        if (request.getMethod().equals("GET")) {    
+            // GET request: 회원정보 등록 form 요청 
+            log.debug("RegisterForm Request");
 
-    		List<Community> commList = UserManager.getInstance().findCommunityList();	// 커뮤니티 리스트 검색
-			request.setAttribute("commList", commList);	
-		
-			return "/user/registerForm.jsp";   // 검색한 커뮤니티 리스트를 registerForm으로 전송     	
-	    }	
-
-    	// POST request (회원정보가 parameter로 전송됨)
-       	User user = new User(
-			request.getParameter("userId"),
-			request.getParameter("password"),
-			request.getParameter("name"),
-			request.getParameter("email"),
-			request.getParameter("phone"),
-			Integer.parseInt(request.getParameter("commId")));
-		
+//            List<Community> commList = UserManager.getInstance().findCommunityList();   // 커뮤니티 리스트 검색
+//            request.setAttribute("commList", commList); 
+        
+            return "/user/registerForm.jsp";   // 검색한 커뮤니티 리스트를 registerForm으로 전송       
+        }   
+        
+        String birthDateString = request.getParameter("birth_date");
+        java.sql.Date birthDate = java.sql.Date.valueOf(birthDateString); // 문자열을 java.sql.Date로 변환
+        
+        // POST request (회원정보가 parameter로 전송됨)
+        User user = new User(
+                request.getParameter("name"),
+                birthDate,
+                request.getParameter("nickname"),
+                request.getParameter("email"),
+                request.getParameter("passwd"),
+                request.getParameter("phone"),
+                request.getParameter("address"));
+        user.setManner_score(0); 
+        user.setCustomerId(0);
         log.debug("Create User : {}", user);
 
-		try {
-			UserManager manager = UserManager.getInstance();
-			manager.create(user);
-	        return "redirect:/user/list";	// 성공 시 사용자 리스트 화면으로 redirect
-	        
-		} catch (ExistingUserException e) {	// 예외 발생 시 회원가입 form으로 forwarding
+        try {
+            UserManager manager = UserManager.getInstance();
+            manager.create(user);
+            return "redirect:/user/login/form";   // 성공 시 로그인 화면으로 
+            //userman3에서는 list로 리다이렉트
+            
+        } catch (ExistingUserException e) { // 예외 발생 시 회원가입 form으로 forwarding
             request.setAttribute("registerFailed", true);
-			request.setAttribute("exception", e);
-			request.setAttribute("user", user);
-			return "/user/registerForm.jsp";
-		}
+            request.setAttribute("exception", e);
+            request.setAttribute("user", user);
+            return "/user/registerForm.jsp";
+        }
     }
 }
 

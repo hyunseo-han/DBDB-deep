@@ -1,3 +1,4 @@
+//수정해야 함
 package controller;
 
 import java.util.HashMap;
@@ -20,7 +21,7 @@ public class RequestMapping {
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/logout", new LogoutController());
-        mappings.put("/user/list", new ListUserController());
+//        mappings.put("/user/list", new ListUserController());
         mappings.put("/user/view", new ViewUserController());
         
         // 회원 가입 폼 요청과 가입 요청 처리 병합 (폼에 커뮤니티 선택 메뉴 추가를 위함)
@@ -31,18 +32,18 @@ public class RequestMapping {
         // 사용자 정보 수정 폼 요청과 수정 요청 처리 병합
 //      mappings.put("/user/update/form", new UpdateUserFormController());
 //      mappings.put("/user/update", new UpdateUserController());        
-        mappings.put("/user/update", new UpdateUserController());
+//        mappings.put("/user/update", new UpdateUserController()); //필요시 주석 해제
         
-        mappings.put("/user/delete", new DeleteUserController());
+//        mappings.put("/user/delete", new DeleteUserController());
         
         // 커뮤니티 관련 request URI 추가
-        mappings.put("/community/list", new ListCommunityController());
-        mappings.put("/community/view", new ViewCommunityController());
-        mappings.put("/community/create/form", new ForwardController("/community/creationForm.jsp"));
-        mappings.put("/community/create", new CreateCommunityController());
-        mappings.put("/community/update", new UpdateCommunityController());
-        
-        logger.info("Initialized Request Mapping!");
+//        mappings.put("/community/list", new ListCommunityController());
+//        mappings.put("/community/view", new ViewCommunityController());
+//        mappings.put("/community/create/form", new ForwardController("/community/creationForm.jsp"));
+//        mappings.put("/community/create", new CreateCommunityController());
+//        mappings.put("/community/update", new UpdateCommunityController());
+//        
+//        logger.info("Initialized Request Mapping!");
     }
 
     public Controller findController(String uri) {	
