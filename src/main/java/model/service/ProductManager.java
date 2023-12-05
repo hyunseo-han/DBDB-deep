@@ -38,10 +38,8 @@ public class ProductManager {
         return productDAO.getAllProducts();
     }
 
-    public Product getProduct(int productId) throws SQLException, Exception {
-        // This method would need to be implemented in the DAO.
-        // return productDAO.getProduct(productId);
-        return null; // Placeholder return
+    public Product getProductById(int productId) throws SQLException, Exception {
+        return productDAO.getProductById(productId);
     }
 
 }

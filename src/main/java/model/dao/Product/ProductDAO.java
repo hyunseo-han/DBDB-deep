@@ -36,7 +36,7 @@ public class ProductDAO {
 
     // 상품 수정
     public boolean updateProduct(Product product) throws Exception {
-        String sql = "UPDATE products SET regularPrice = ?, rentalFee = ?, description = ?, deposit = ?, rentalLocation = ?, productPhoto = ?, address = ?, detailAddress = ?, isBorrowed = ?, customerId = ? WHERE productId = ?";
+        String sql = "UPDATE product SET regularPrice = ?, rentalFee = ?, description = ?, deposit = ?, rentalLocation = ?, productPhoto = ?, address = ?, detailAddress = ?, isBorrowed = ?, customerId = ? WHERE productId = ?";
         Object[] params = { product.getRegularPrice(), product.getRentalFee(), product.getDescription(), product.getDeposit(), product.getProductPhoto(), product.getAddress(), product.getDetailAddress(), product.isBorrowed(), product.getCustomerId(), product.getProductId() };
 
         jdbcUtil.setSqlAndParameters(sql, params);
@@ -51,7 +51,7 @@ public class ProductDAO {
 
     // 상품 삭제
     public boolean deleteProduct(int productId) throws Exception {
-        String sql = "DELETE FROM products WHERE productId = ?";
+        String sql = "DELETE FROM product WHERE productId = ?";
         jdbcUtil.setSqlAndParameters(sql, new Object[] { productId });
 
         try {
@@ -92,5 +92,35 @@ public class ProductDAO {
             jdbcUtil.close();
         }
         return productList;
+    }
+    
+    // 특정 상품 조회 
+    public Product getProductById(int productId) throws SQLException {
+        String sql = "SELECT * FROM product WHERE productId = ?";
+        jdbcUtil.setSqlAndParameters(sql, new Object[] { productId });
+
+        try {
+            ResultSet rs = jdbcUtil.executeQuery();
+            if (rs.next()) {
+                Product product = new Product(
+                    rs.getInt("productId"),
+                    rs.getInt("regular_price"),
+                    rs.getInt("rental_fee"),
+                    rs.getString("description"),
+                    rs.getInt("deposit"),
+                    rs.getString("product_photo"),
+                    rs.getString("address"),
+                    rs.getString("detail_address"),
+                    rs.getBoolean("is_borrowed"),
+                    rs.getInt("customerId"),
+                    rs.getString("title"),
+                    rs.getString("category")
+                );
+                return product;
+            }
+        } finally {
+            jdbcUtil.close();
+        }
+        return null; // 상품을 찾지 못한 경우 null 반환
     }
 }
