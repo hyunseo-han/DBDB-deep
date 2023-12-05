@@ -13,10 +13,11 @@ public class Product {
     private boolean isBorrowed;
     private int customerId; //fk
     private String title;
+    private String category;
     
     public Product(int productId, int regularPrice, int rentalFee, String description, int deposit,
             String productPhoto, String address, String detailAddress, boolean isBorrowed,
-            int customerId, String title) {
+            int customerId, String title, String category) {
         super();
         this.productId = productId;
         this.regularPrice = regularPrice;
@@ -30,6 +31,7 @@ public class Product {
         this.isBorrowed = isBorrowed;
         this.customerId = customerId;
         this.title = title;
+        this.category = category;
     }
 
     public int getProductId() {
@@ -119,6 +121,16 @@ public class Product {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+    
+    
 
 //    public String getRentalLocation() {
 //        return rentalLocation;

@@ -19,7 +19,9 @@ function productCreate() {
     } 
     myform.submit();
 }
-
+function setCategory(category) {
+    document.getElementById('categoryInput').value = category;
+}
 </script>
 </head>
 <body>
@@ -44,7 +46,6 @@ function productCreate() {
             <div class="input-title">물품 설명</div>
             <input class="input-text" placeholder="물품 설명을 입력해주세요." type="text"
                 name="description" />
-
             <div class="input-title">물품의 정가</div>
             <input class="input-text" placeholder="물품의 정가를 입력해주세요." type="text"
                 name="regular_price" />
@@ -54,9 +55,16 @@ function productCreate() {
             <div class="input-title">보증금</div>
             <input class="input-text" placeholder="물품의 보증금을 입력해주세요." type="text"
                 name="deposit" />
+                
             <div class="input-title">물품 카테고리</div>
-            <input class="input-text" placeholder="물품 카테고리를 입력해주세요." type="text"
-                name="category" />
+            <div class="category-div">
+			    <button class="category-buttons" type="button" onclick="setCategory('주방가전')">주방가전</button>
+			    <button class="category-buttons" type="button" onclick="setCategory('촬영장비')">촬영장비</button>
+			    <button class="category-buttons" type="button" onclick="setCategory('오락기기')">오락기기</button>
+			    <button class="category-buttons" type="button" onclick="setCategory('기타')">기타</button>
+			</div>
+			
+            <input type="hidden" name="category" id="categoryInput" value="">
             <div class="input-title">대여 진행 장소</div>
             <input class="input-text" placeholder="대여를 진행할 장소를 입력해주세요."
                 type="text" name="address" />

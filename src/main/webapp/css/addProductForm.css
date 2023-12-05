@@ -101,3 +101,33 @@
     width: 80%; 
     max-width: 1239px; 
 }
+
+.category-div {
+	margin: auto;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+/* 버튼 기본 스타일 */
+.category-buttons {
+    background-color:  #05b70c; 
+    color: white; 
+    width: 130px;
+    height: 45px;
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 1em; 
+    cursor: pointer; 
+    margin-right: 10px; 
+    font-size: 20px; 
+    transition: background-color 0.3s;
+}
+
+/* 마우스 오버 시 버튼 배경 색상 변경 */
+.category-buttons:hover {
+    background-color: #45a049;
+}
+
+.category-buttons:focus {
+  background-color: #45a049;
+}

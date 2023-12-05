@@ -44,6 +44,8 @@ public class ProductController implements Controller {
         String title = getValue(request.getPart("title"));
         log.debug("Title parameter: {}", title); // SLF4J 로깅
         System.out.println("Title parameter: " + title);
+        String category = getValue(request.getPart("category"));
+        System.out.println("Category parameter: " + category);
                 
         String action = getValue(request.getPart("action"));
 //        if (action == null || action.isEmpty()) {
@@ -74,9 +76,12 @@ public class ProductController implements Controller {
         String newFileName = uniqueID + "_" + fileName;
         // 업로드 폴더의 실제 서버 경로를 찾음
         String uploadPath = request.getServletContext().getRealPath("") + File.separator + "upload";
+        log.debug("uploadPath parameter: {}", uploadPath); // SLF4J 로깅
+        System.out.println("uploadPath at: " + uploadPath);
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) uploadDir.mkdir();
         String saveAs = uploadPath + File.separator + newFileName;
+        System.out.println("saveAs: " + saveAs);
 
         // 파일 저장
         try (InputStream fileContent = filePart.getInputStream();
@@ -109,7 +114,8 @@ public class ProductController implements Controller {
                 detailAddress,
                 false,
                 customerId,
-                title);
+                title,
+                category);
         try {
             ProductManager productManager = ProductManager.getInstance();
             productManager.addProduct(product);

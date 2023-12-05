@@ -16,8 +16,8 @@ public class ProductDAO {
 
     // 상품 등록
     public boolean addProduct(Product product) throws Exception {
-        String sql = "INSERT INTO product (productId, regular_price, rental_fee, description, deposit, product_photo, address, detail_address, is_borrowed, customerid, title) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        Object[] params = { product.getProductId(), product.getRegularPrice(), product.getRentalFee(), product.getDescription(), product.getDeposit(), product.getProductPhoto(), product.getAddress(), product.getDetailAddress(), product.isBorrowed(), product.getCustomerId(), product.getTitle() };
+        String sql = "INSERT INTO product (productId, regular_price, rental_fee, description, deposit, product_photo, address, detail_address, is_borrowed, customerid, title, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        Object[] params = { product.getProductId(), product.getRegularPrice(), product.getRentalFee(), product.getDescription(), product.getDeposit(), product.getProductPhoto(), product.getAddress(), product.getDetailAddress(), product.isBorrowed(), product.getCustomerId(), product.getTitle(), product.getCategory() };
 
         jdbcUtil.setSqlAndParameters(sql, params);
 
@@ -83,7 +83,8 @@ public class ProductDAO {
                     rs.getString("detailAddress"),
                     rs.getBoolean("isBorrowed"),
                     rs.getInt("customerId"),
-                    rs.getString("title")
+                    rs.getString("title"),
+                    rs.getString("category")
                 );
                 productList.add(product);
             }
