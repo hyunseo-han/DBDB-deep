@@ -27,11 +27,16 @@ public class RequestMapping {
         // 물건 상세 보기 
         mappings.put("/product/view", new ViewProductController());
         
-        // 물건 등록 url GET 요청
+        // 로그인
         mappings.put("/user/loginForm", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
+        
+        // 물건 등록
         mappings.put("/product/addProductForm", new ForwardController("/product/addProductForm.jsp"));
         mappings.put("/product/create", new ProductController());
+        
+        // 물건 삭제
+        mappings.put("/product/delete", new ProductController());
         
 
         

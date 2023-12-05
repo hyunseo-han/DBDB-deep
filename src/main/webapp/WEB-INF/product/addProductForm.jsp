@@ -72,9 +72,7 @@ function setCategory(category) {
             <div class="input-title">대여 상세 주소</div>
             <input class="input-text" placeholder="대여를 진행할 상세 주소를 입력해주세요."
                 type="text" name="detail_address" />
-        </div>
-        <input type="hidden" name="action" value="add" />
-        
+        </div>        
         <button type="submit" class="select-date-btn" onClick="productCreate()">물건 등록</button>
     </form>
 

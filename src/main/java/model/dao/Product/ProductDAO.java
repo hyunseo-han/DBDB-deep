@@ -57,9 +57,14 @@ public class ProductDAO {
         try {
             int result = jdbcUtil.executeUpdate();
             return result > 0;
-        } finally {
-            jdbcUtil.close();
-        }
+        } catch (Exception ex) {
+            jdbcUtil.rollback();
+            ex.printStackTrace();
+        } finally {     
+            jdbcUtil.commit();
+            jdbcUtil.close();   // resource 반환
+        }  
+        return false;
     }
 
     // 상품 조회

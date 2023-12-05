@@ -41,53 +41,26 @@ public class ProductController implements Controller {
     
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        request.setCharacterEncoding("utf-8");
-     // 'title' 파라미터 값 로깅
-        
-//        String title = getValue(request.getPart("title"));
-//        log.debug("Title parameter: {}", title); // SLF4J 로깅
-//        System.out.println("Title parameter: " + title);
-//        String category = getValue(request.getPart("category"));
-//        System.out.println("Category parameter: " + category);
-                
-       // String action = getValue(request.getPart("action"));
-//        String action = null;
-//
-//        if (action == null || action.isEmpty()) {
-//            return "/product/list.jsp"; // GET 요청에 대해 addProductForm.jsp 반환
-//        }
-//        switch (action) {
-//            case "add":
-//                return addProduct(request, response);
-//            case "list":
-//                return getProductList(request, response);
-//////            case "view":
-//////                return detailProduct(request, response);
-//////            case "update":
-//////                return updateProduct(request, response);
-//////            case "delete":
-//////                return deleteProduct(request, response);
-//            default:
-////                return "/product/addProductForm.jsp";
-//                return "/product/list.jsp"; // 기본 액션(전체 목록) 
-//        }
-        ////////////// 아래꺼 사용!! 
+        request.setCharacterEncoding("utf-8");       
+        String action = request.getParameter("action");
+        if (action != null) {
+            switch (action) {
+                case "delete":
+                    return deleteProduct(request, response);
+                default:
+                    return "/product/list.jsp";
+            }
+        }
+
         
         if (request.getMethod().equals("GET")) {    
             // 전체 보기 
             return getProductList(request, response);
         }
         else if(request.getMethod().equals("POST")) { 
-            // 물건 등록 
-          String title = getValue(request.getPart("title"));
-          log.debug("Title parameter: {}", title); // SLF4J 로깅
-          System.out.println("Title parameter: " + title);
-          String category = getValue(request.getPart("category"));
-          System.out.println("Category parameter: " + category);
-                  
-          String action = getValue(request.getPart("action"));
-          return addProduct(request, response);
-          
+          // 물건 등록 
+//          String action1 = getValue(request.getPart("action"));
+          return addProduct(request, response);         
         }
         else {
             return "";
@@ -132,7 +105,6 @@ public class ProductController implements Controller {
         String category = getValue(request.getPart("category"));
         String address = getValue(request.getPart("address"));
         String detailAddress = getValue(request.getPart("detail_address"));
-//        int customerId = Integer.parseInt(getValue(request.getPart("customerId")));
              
         Product product = new Product(
                 0, 
@@ -193,19 +165,21 @@ public class ProductController implements Controller {
         }
     }
     
-//    private String detailProduct(HttpServletRequest request, HttpServletResponse response) {
-//        // 상품 상세 목록 조회 로직 구현
-//        return "/WEB-INF/view/productDetail.jsp";
-//    }
-//
-//    private String updateProduct(HttpServletRequest request, HttpServletResponse response) {
-//        // 상품 수정 로직 구현
-//        return "redirect:/product/view?id=" + request.getParameter("id");
-//    }
-//
-//    private String deleteProduct(HttpServletRequest request, HttpServletResponse response) {
-//        // 상품 삭제 로직 구현
-//        return "redirect:/product/list";
-//    }
+    private String deleteProduct(HttpServletRequest request, HttpServletResponse response) {
+        int productId = Integer.parseInt(request.getParameter("id"));
+
+        try {
+            ProductManager productManager = ProductManager.getInstance();
+            productManager.deleteProduct(productId);
+
+            return "redirect:/product/list"; // 삭제 성공 시 물품 목록 페이지로 리디렉션
+        } catch (Exception e) {
+            log.error("Error deleting product", e);
+            request.setAttribute("error", "물품 삭제 중 오류가 발생했습니다.");
+            
+            return "redirect:/product/view?id=" + productId; // 삭제 실패 시 상품 상세 페이지로 리디렉션
+        }
+    }
+    
 
 }
