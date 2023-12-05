@@ -65,7 +65,7 @@ public class ProductDAO {
     // 상품 조회
     public List<Product> getAllProducts() throws SQLException {
         List<Product> productList = new ArrayList<>();
-        String sql = "SELECT * FROM products";
+        String sql = "SELECT * FROM product";
         jdbcUtil.setSqlAndParameters(sql, null);
 
         try {
@@ -73,15 +73,15 @@ public class ProductDAO {
             while (rs.next()) {
                 Product product = new Product(
                     rs.getInt("productId"),
-                    rs.getInt("regularPrice"),
-                    rs.getInt("rentalFee"),
+                    rs.getInt("regular_price"),
+                    rs.getInt("rental_fee"),
                     rs.getString("description"),
                     rs.getInt("deposit"),
 //                    rs.getString("rentalLocation"),
-                    rs.getString("productPhoto"),
+                    rs.getString("product_photo"),
                     rs.getString("address"),
-                    rs.getString("detailAddress"),
-                    rs.getBoolean("isBorrowed"),
+                    rs.getString("detail_address"),
+                    rs.getBoolean("is_borrowed"),
                     rs.getInt("customerId"),
                     rs.getString("title"),
                     rs.getString("category")

@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -41,30 +42,56 @@ public class ProductController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         request.setCharacterEncoding("utf-8");
      // 'title' 파라미터 값 로깅
-        String title = getValue(request.getPart("title"));
-        log.debug("Title parameter: {}", title); // SLF4J 로깅
-        System.out.println("Title parameter: " + title);
-        String category = getValue(request.getPart("category"));
-        System.out.println("Category parameter: " + category);
-                
-        String action = getValue(request.getPart("action"));
-//        if (action == null || action.isEmpty()) {
-//            return "/product/addProductForm.jsp"; // GET 요청에 대해 addProductForm.jsp 반환
-//        }
-        switch (action) {
-            case "add":
-                return addProduct(request, response);
-////            case "view":
-////                return detailProduct(request, response);
-////            case "update":
-////                return updateProduct(request, response);
-////            case "delete":
-////                return deleteProduct(request, response);
-            default:
-                return "/product/addProductForm.jsp";
-//                return "/product/view"; // 기본 액션
-        }
         
+//        String title = getValue(request.getPart("title"));
+//        log.debug("Title parameter: {}", title); // SLF4J 로깅
+//        System.out.println("Title parameter: " + title);
+//        String category = getValue(request.getPart("category"));
+//        System.out.println("Category parameter: " + category);
+                
+       // String action = getValue(request.getPart("action"));
+//        String action = null;
+//
+//        if (action == null || action.isEmpty()) {
+//            return "/product/list.jsp"; // GET 요청에 대해 addProductForm.jsp 반환
+//        }
+//        switch (action) {
+//            case "add":
+//                return addProduct(request, response);
+//            case "list":
+//                return getProductList(request, response);
+//////            case "view":
+//////                return detailProduct(request, response);
+//////            case "update":
+//////                return updateProduct(request, response);
+//////            case "delete":
+//////                return deleteProduct(request, response);
+//            default:
+////                return "/product/addProductForm.jsp";
+//                return "/product/list.jsp"; // 기본 액션(전체 목록) 
+//        }
+        ////////////// 아래꺼 사용!! 
+        
+        if (request.getMethod().equals("GET")) {    
+            // 전체 보기 
+            return getProductList(request, response);
+        }
+        else if(request.getMethod().equals("POST")) { 
+            // 물건 등록 
+          String title = getValue(request.getPart("title"));
+          log.debug("Title parameter: {}", title); // SLF4J 로깅
+          System.out.println("Title parameter: " + title);
+          String category = getValue(request.getPart("category"));
+          System.out.println("Category parameter: " + category);
+                  
+          String action = getValue(request.getPart("action"));
+          return addProduct(request, response);
+          
+        }
+        else {
+            return "";
+        }
+       
     }
     
     // 상품 등록
@@ -121,7 +148,7 @@ public class ProductController implements Controller {
             productManager.addProduct(product);
 
             log.debug("Create Product : {}", product);
-            return "redirect:/product/view"; // 성공시 물 리스트 화면으로 redirect
+            return "redirect:/product/view"; // 성공시 물건  리스트 화면으로 redirect
             
         } catch (Exception e) {     // 예외 발생 시 입력 form으로 forwarding
             request.setAttribute("creationFailed", true);
@@ -145,8 +172,25 @@ public class ProductController implements Controller {
         }
     }
 
+    // 전체 상품 조회
+    private String getProductList(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            ProductManager productManager = ProductManager.getInstance();
+            List<Product> products = productManager.getAllProducts();
+            
+            request.setAttribute("products", products);
+            
+            return "/product/list.jsp"; 
+        } catch (Exception e) {
+            log.error("Error listing products", e);
+            request.setAttribute("error", "상품 목록을 불러오는 중 오류가 발생했습니다.");
+            
+            return "/product/list.jsp"; 
+        }
+    }
+    
 //    private String detailProduct(HttpServletRequest request, HttpServletResponse response) {
-//        // 상품 조회 로직 구현
+//        // 상품 상세 목록 조회 로직 구현
 //        return "/WEB-INF/view/productDetail.jsp";
 //    }
 //

@@ -19,12 +19,19 @@ public class RequestMapping {
 
     public void initMapping() {
     	// 각 uri에 대응되는 controller 객체를 생성 및 저장
+        mappings.put("/", new ForwardController("index.jsp"));
+
+        // 물건 전체 보기 (메인 페이지)
+        mappings.put("/product/list", new ProductController());
+        
         
         // 물건 등록 url GET 요청
         mappings.put("/user/loginForm", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
         mappings.put("/product/addProductForm", new ForwardController("/product/addProductForm.jsp"));
         mappings.put("/product/create", new ProductController());
+        
+
         
         logger.info("Initialized Request Mapping!");
     } 
