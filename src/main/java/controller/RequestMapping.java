@@ -24,6 +24,8 @@ public class RequestMapping {
         // 물건 전체 보기 (메인 페이지)
         mappings.put("/product/list", new ProductController());
         
+        // 물건 상세 보기 
+        mappings.put("/product/view", new ViewProductController());
         
         // 물건 등록 url GET 요청
         mappings.put("/user/loginForm", new ForwardController("/user/loginForm.jsp"));

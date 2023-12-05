@@ -28,16 +28,21 @@
 				<div class="category-text">촬영장비</div>
 				<div class="category-text">뷰티/헬스</div>
 			</div>
-			
+
 			<div class="goods-wrapper">
 				<c:forEach var="product" items="${products}">
-					<div class="goods">
-						<img class="goods-img" src="<c:url value="/upload/${product.productPhoto}" />"/> 
-						<div class="goods-name">${product.title}</div>
-						<div class="goods-price">${product.rentalFee}원 </div>
-						<div class="goods-place">${product.address}</div>
-					</div>
+					<a href="<c:url value="/product/view?id=${product.productId}" />">
+						<div class="goods">
+							<img class="goods-img"
+								src="<c:url value="/upload/${product.productPhoto}" />" 
+								alt="이미지 없슈 : ${product.title}"/>
+							<div class="goods-name">${product.title}</div>
+							<div class="goods-price">${product.rentalFee}원</div>
+							<div class="goods-place">${product.address}</div>
+						</div>
+					</a>
 				</c:forEach>
+
 			</div>
 		</div>
 	</div>
