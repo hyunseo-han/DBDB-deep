@@ -1,0 +1,119 @@
+.screen {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.screen .div {
+  background-color: #ffffff;
+}
+
+.screen .input {
+  display: inline-flex;
+  width: 900px;
+  height: 40px;
+  margin-top: 33px;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  gap: 660px;
+  background-color: #f2f3f6;
+  border-radius: 6px;
+}
+
+.screen .input-text {
+  padding-left: 18px;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  background: none;
+  border: none;
+}
+
+.screen .category-wrapper {
+  display: flex;
+  width: 900px;
+  height: 40px;
+  padding: 10px 534px 10px 31px;
+  align-items: flex-start;
+  gap: 30px;
+  border-radius: 6px;
+  border: 1px solid #f2f3f6;
+  background: #f2f3f6;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.screen .category-text {
+  color: #868b94;
+  text-align: center;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.screen .goods-wrapper {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 105px;
+  width: 900px;
+}
+
+.screen .goods {
+  display: flex;
+  flex-direction: column;
+  width: 223px;
+  height: 308.5px;
+  flex-shrink: 0;
+}
+
+.screen .goods-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(223px, 1fr)); /* 각 컬럼의 최소 너비를 223px로 설정하고, 가능한 많은 컬럼을 생성합니다. */
+  grid-gap: 30px; /* 그리드 항목 간의 간격을 30px로 설정합니다. */
+  width: 900px;
+  margin: auto; /* 좌우 중앙 정렬 */
+}
+
+.screen .goods {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* 그리드 내부에서 자동으로 크기 조정 */
+  height: 308.5px;
+}
+
+
+.screen .goods-img {
+  width: 223px;
+  height: 223px;
+}
+
+.screen .goods-name {
+  color: #212529;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.02px;
+}
+
+.screen .goods-price {
+  color: #212529;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22.5px; /* 150% */
+}
+
+.screen .goods-place {
+  color: #212529;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px; /* 150% */
+}
