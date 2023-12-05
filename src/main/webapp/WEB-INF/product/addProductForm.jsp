@@ -73,9 +73,6 @@ function setCategory(category) {
                 type="text" name="detail_address" />
         </div>
         <input type="hidden" name="action" value="add" />
-        <!-- <!— 로그인 구현 전까지 임시 customerId —> -->
-        <input type="hidden" name="customerId" value="1" />
-        <input type="hidden" name="product_photo" value="photo1234.jpg" />
         
         <button type="submit" class="select-date-btn" onClick="productCreate()">물건 등록</button>
     </form>

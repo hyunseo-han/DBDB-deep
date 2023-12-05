@@ -28,8 +28,14 @@ public class CustomerManager {
         return customerDAO.create(customer);
     }
     
-    public boolean login(String email, String password)
+    public Customer login(String email, String password)
             throws SQLException, UserNotFoundException, PasswordMismatchException {
+            
+            Customer customer = customerDAO.findUserByEmail(email);
+            if (customer == null) {
+                throw new UserNotFoundException("사용자를 찾을 수 없습니다.");
+            }
+            
             if(customerDAO.login(email, password) == false) {
                 throw new PasswordMismatchException("로그인에 실패했습니다.");
             }
@@ -37,6 +43,6 @@ public class CustomerManager {
 //          if (!user.matchPassword(password)) {
 //              
 //          }
-            return true;
+            return customer;
         }
 }

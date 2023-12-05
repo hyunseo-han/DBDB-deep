@@ -20,6 +20,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import org.slf4j.Logger;
@@ -120,6 +121,9 @@ public class ProductController implements Controller {
             }
         }  
         
+        HttpSession session = request.getSession();
+        int customerId = (int) session.getAttribute("customerId");
+        
         String title = getValue(request.getPart("title"));
         String description = getValue(request.getPart("description"));
         int regularPrice = Integer.parseInt(getValue(request.getPart("regular_price")));
@@ -128,7 +132,7 @@ public class ProductController implements Controller {
         String category = getValue(request.getPart("category"));
         String address = getValue(request.getPart("address"));
         String detailAddress = getValue(request.getPart("detail_address"));
-        int customerId = Integer.parseInt(getValue(request.getPart("customerId")));
+//        int customerId = Integer.parseInt(getValue(request.getPart("customerId")));
              
         Product product = new Product(
                 0, 
@@ -148,7 +152,7 @@ public class ProductController implements Controller {
             productManager.addProduct(product);
 
             log.debug("Create Product : {}", product);
-            return "redirect:/product/view"; // 성공시 물건  리스트 화면으로 redirect
+            return "redirect:/product/list"; // 성공시 물건  리스트 화면으로 redirect
             
         } catch (Exception e) {     // 예외 발생 시 입력 form으로 forwarding
             request.setAttribute("creationFailed", true);

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Controller;
+import model.Customer;
 import model.service.CustomerManager;
 
 public class LoginController implements Controller {
@@ -16,13 +17,14 @@ public class LoginController implements Controller {
 		try {
 			// 모델에 로그인 처리를 위임
 			CustomerManager manager = CustomerManager.getInstance();
-			manager.login(email, password);
+			Customer customer = manager.login(email, password);manager.login(email, password);
 	
 			// 세션에 사용자 이이디 저장
 			HttpSession session = request.getSession();
             session.setAttribute(UserSessionUtils.USER_SESSION_KEY, email);
+            session.setAttribute("customerId", customer.getCustomerId());
             
-            return "redirect:/product/addProductForm";			
+            return "redirect:/product/list";			
 		} catch (Exception e) {
 			/* UserNotFoundException이나 PasswordMismatchException 발생 시
 			 * 다시 login form을 사용자에게 전송하고 오류 메세지도 출력

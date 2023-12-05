@@ -117,4 +117,34 @@ public class CustomerDAO {
         }
         return false;
     }
+    
+    public Customer findUserByEmail(String email) throws SQLException {
+        Customer customer = null;
+        
+        String sql = "SELECT * FROM CUSTOMER WHERE email = ?";
+        jdbcUtil.setSqlAndParameters(sql, new Object[] {email});
+        try {
+            ResultSet rs = jdbcUtil.executeQuery(); 
+            if (rs.next()) {
+                customer = new Customer(
+                        rs.getInt("customerId"),
+                        rs.getString("name"),
+                        rs.getString("passwd"),
+                        rs.getString("address"),
+                        rs.getString("email"),
+                        rs.getString("phone"),
+                        rs.getString("nickname"),
+                        rs.getInt("manner_score"),
+                        rs.getDate("birth_date").toLocalDate());  
+                return customer;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            jdbcUtil.close();
+        }
+        return null;
+    }
+    
+   
 }
