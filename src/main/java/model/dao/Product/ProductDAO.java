@@ -16,23 +16,28 @@ public class ProductDAO {
 
     // 상품 등록
     public boolean addProduct(Product product) throws Exception {
-        String sql = "INSERT INTO products (productId, regularPrice, rentalFee, description, deposit, rentalLocation, productPhoto, address, detailAddress, isBorrowed, customerId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        Object[] params = { product.getProductId(), product.getRegularPrice(), product.getRentalFee(), product.getDescription(), product.getDeposit(), product.getRentalLocation(), product.getProductPhoto(), product.getAddress(), product.getDetailAddress(), product.isBorrowed(), product.getCustomerId() };
+        String sql = "INSERT INTO product (productId, regular_price, rental_fee, description, deposit, product_photo, address, detail_address, is_borrowed, customerid, title) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        Object[] params = { product.getProductId(), product.getRegularPrice(), product.getRentalFee(), product.getDescription(), product.getDeposit(), product.getProductPhoto(), product.getAddress(), product.getDetailAddress(), product.isBorrowed(), product.getCustomerId(), product.getTitle() };
 
         jdbcUtil.setSqlAndParameters(sql, params);
 
         try {
             int result = jdbcUtil.executeUpdate();
             return result > 0;
-        } finally {
-            jdbcUtil.close();
-        }
+        } catch (Exception ex) {
+            jdbcUtil.rollback();
+            ex.printStackTrace();
+        } finally {     
+            jdbcUtil.commit();
+            jdbcUtil.close();   // resource 반환
+        }   
+        return false;
     }
 
     // 상품 수정
     public boolean updateProduct(Product product) throws Exception {
         String sql = "UPDATE products SET regularPrice = ?, rentalFee = ?, description = ?, deposit = ?, rentalLocation = ?, productPhoto = ?, address = ?, detailAddress = ?, isBorrowed = ?, customerId = ? WHERE productId = ?";
-        Object[] params = { product.getRegularPrice(), product.getRentalFee(), product.getDescription(), product.getDeposit(), product.getRentalLocation(), product.getProductPhoto(), product.getAddress(), product.getDetailAddress(), product.isBorrowed(), product.getCustomerId(), product.getProductId() };
+        Object[] params = { product.getRegularPrice(), product.getRentalFee(), product.getDescription(), product.getDeposit(), product.getProductPhoto(), product.getAddress(), product.getDetailAddress(), product.isBorrowed(), product.getCustomerId(), product.getProductId() };
 
         jdbcUtil.setSqlAndParameters(sql, params);
 
@@ -68,16 +73,17 @@ public class ProductDAO {
             while (rs.next()) {
                 Product product = new Product(
                     rs.getInt("productId"),
-                    rs.getDouble("regularPrice"),
-                    rs.getDouble("rentalFee"),
+                    rs.getInt("regularPrice"),
+                    rs.getInt("rentalFee"),
                     rs.getString("description"),
-                    rs.getDouble("deposit"),
-                    rs.getString("rentalLocation"),
+                    rs.getInt("deposit"),
+//                    rs.getString("rentalLocation"),
                     rs.getString("productPhoto"),
                     rs.getString("address"),
                     rs.getString("detailAddress"),
                     rs.getBoolean("isBorrowed"),
-                    rs.getInt("customerId")
+                    rs.getInt("customerId"),
+                    rs.getString("title")
                 );
                 productList.add(product);
             }

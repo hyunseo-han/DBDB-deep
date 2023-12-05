@@ -1,0 +1,103 @@
+.header {
+  background-color: #05b70c;
+  display: flex;
+  width: 100%;
+  height: 124px;
+  margin-bottom: 150px;
+}
+
+.header-text {
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  margin: auto;
+}
+
+.cart-icon {
+  height: 45px;
+  width: 53px;
+  margin-top: 39px;
+  margin-right: 50px;
+}
+
+.back-icon {
+  height: 45px;
+  width: 53px;
+  margin-top: 39px;
+  margin-left: 50px;
+}
+
+.div {
+  height: 509px;
+  width: 453px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.input {
+  margin-left: 50px;
+  margin-bottom: 50px;
+}
+.input-title {
+  color: black;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid #05b70c;
+  padding-bottom: 25px;
+  border-width: 0 0 2px;
+  width: 1239px;
+  margin-top: 50px;
+}
+
+.input-text {
+  margin-top: 50px;
+  border-width: 0 0 2px;
+  border-color: #05b70c;
+  padding-bottom: 25px;
+  width: 1239px;
+  font-size: 25px;
+}
+
+.table-map {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.map-img {
+  width: 360px;
+  height: 270px;
+}
+
+.address {
+  padding-left: 50px;
+  line-height: 40px;
+  font-size: 25px;
+
+  
+}
+
+.select-date-btn {
+    background-color: #05b70c;
+    width: 400px;
+    height: 82px;
+    border-radius: 1em;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+
+.add-form {
+    margin: auto;
+    width: 80%; 
+    max-width: 1239px; 
+}
