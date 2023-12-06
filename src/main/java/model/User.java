@@ -23,7 +23,8 @@ public class User {
 		this.email = email;
 		this.passwd = passwd;
 		this.phone = phone;
-		this.address = address;
+		this.address = address; 
+		this.manner_score = 0; 
 	}
 	
 
@@ -109,6 +110,6 @@ public class User {
     }
 
     public void setManner_score(int manner_score) {
-        this.manner_score = 0;
+        this.manner_score = manner_score;
     }
 }
