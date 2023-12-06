@@ -30,7 +30,7 @@
     font-family: 'Inter';
 	font-style: normal;
 	font-weight: 600;
-	font-size: 33.7138px;
+	font-size: 180px;
 	line-height: 41px;
 	
 /* Â Â Â Â left:Â 300px;
@@ -50,7 +50,7 @@
     font-family: 'Inter';
 	font-style: normal;
 	font-weight: 600;
-	font-size: 33.7138px;
+	font-size: 180px;
 	line-height: 41px;
 /* Â Â Â Â left:Â 300px;
 Â Â Â Â top:Â 50px; */
@@ -66,13 +66,13 @@
 }
 
 .input-wrapper input {
-    /* ¿©±â¿¡ ½ºÅ¸ÀÏÀ» Ãß°¡ÇÏ¼¼¿ä */
+    /* ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ */
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
     font-size: 33.7138px;
     line-height: 41px;
-    /* ³ª¸ÓÁö ½ºÅ¸ÀÏµéµµ Ãß°¡ÇÏ¼¼¿ä */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½Ïµéµµ ï¿½ß°ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½ */
 }
 	
 

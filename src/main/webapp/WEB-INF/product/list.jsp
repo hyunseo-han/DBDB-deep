@@ -21,13 +21,24 @@
 
 		<div class="div">
 			<div class="head">빌려중고?</div>
-			<div class="input">
-				<input class="input-text" placeholder="어떤 제품을 찾고 계신가요?" type="text" />
-				<img class="search-icon"
-					src="<c:url value='/images/product/searchicon.svg'/>" />
+			<div class="wrapper">
+				<div class="input">
+					<input class="input-text" placeholder="어떤 제품을 찾고 계신가요?" type="text" />
+					<img class="search-icon"
+						src="<c:url value='/images/product/searchicon.svg'/>" />
+				</div>
+
+				<div class="btn">
+					<div class="name">${sessionScope.name}</div>님 
+					<a class="go-addForm"
+						href="<c:url value='/product/addProductForm'/>"> 물품 등록하러 가기 </a> <span
+						class="logout-btn">로그아웃 </span>
+				</div>
 			</div>
-			<a class="go-addForm" href="<c:url value='/product/addProductForm'/>">
-				물품 등록하러 가기 </a>
+
+
+
+
 
 			<div class="category-wrapper">
 				<div class="category-text">주방가전</div>
