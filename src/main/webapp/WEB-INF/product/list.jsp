@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +42,10 @@
 								src="<c:url value="/upload/${product.productPhoto}" />"
 								alt="이미지 없슈 : ${product.title}" />
 							<div class="goods-name">${product.title}</div>
-							<div class="goods-price">${Math.round(product.rentalFee)}원</div>
+							<div class="goods-price">
+								<fmt:formatNumber value="${product.rentalFee}" pattern="#,##0원" />
+							</div>
+
 							<div class="goods-place">${product.address}</div>
 						</div>
 					</a>
