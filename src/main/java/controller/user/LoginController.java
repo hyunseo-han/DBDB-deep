@@ -12,7 +12,7 @@ public class LoginController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String email = request.getParameter("email");
-        String passwd = request.getParameter("passwd");
+        String passwd = request.getParameter("password");
         
         try {
             // 모델에 로그인 처리를 위임
@@ -24,7 +24,7 @@ public class LoginController implements Controller {
             HttpSession session = request.getSession();
             session.setAttribute(UserSessionUtils.USER_SESSION_KEY, email);
             session.setAttribute("customerId", user.getCustomerId());
-            
+            System.out.println("로그인 성공");
             return "redirect:/product/list";        
         } catch (Exception e) {
             /* UserNotFoundException이나 PasswordMismatchException 발생 시
@@ -32,7 +32,8 @@ public class LoginController implements Controller {
              */
             request.setAttribute("loginFailed", true);
             request.setAttribute("exception", e);
+            System.out.println("로그인 실패");
             return "/user/loginForm.jsp";           
-        }   
+        }
     }
 }

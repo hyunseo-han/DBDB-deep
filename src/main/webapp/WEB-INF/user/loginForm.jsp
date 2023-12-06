@@ -5,8 +5,7 @@
 <head>
 <title>DBDB-deep 로그인</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />"
-	type="text/css">
+
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/login.css'/>">
 <script>
@@ -28,14 +27,13 @@ function login() {
 		form.password.focus();
 		return false;
 	}
-	<%System.out.println("로그인성공");%>
 	form.submit();
 }
 </script>
 </head>
 <body>
 	<div>
-	<form name="form" method="POST" action="<c:url value='/user/login' />"> 
+	<form name="form" method="POST" action="<c:url value='/user/login/form' />"> 
 	<p class="lo">Login</p>
         <span><input class="rectangle1" name="email" type="text" placeholder="이메일"></span>
         <span><input class="rectangle2" name="password" type="text" placeholder="비밀번호"></span>
