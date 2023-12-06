@@ -20,7 +20,7 @@
 	<div class="screen">
 
 		<div class="div">
-			<div class="head">빌려중고야? </div>
+			<div class="head">빌려중고야?</div>
 
 			<div class="top">
 				<div class="wrapper">
@@ -44,8 +44,8 @@
 						님
 					</div>
 					<a class="go-addForm"
-						href="<c:url value='/product/addProductForm'/>"> 물품 등록</a> <span
-						class="logout-btn">로그아웃 </span>
+						href="<c:url value='/product/addProductForm'/>"> 물품 등록</a> <div
+						class="logout-btn"> <a href="<c:url value='/user/logout'/>">로그아웃</a></div>
 				</div>
 			</div>
 
