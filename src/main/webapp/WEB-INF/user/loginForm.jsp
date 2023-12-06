@@ -40,7 +40,7 @@ function login() {
     	<input class="rectangle1" name="email" type="text" placeholder="이메일">
 	</span>
 	<span class="input-wrapper">
-    	<input class="rectangle2" name="password" type="password" placeholder="비밀번호">
+    	<input class="rectangle2" name="password" type="password" placeholder="password 입력 ">
 	</span>
 
     <input id="greySignup" type="button" value="회원가입"
