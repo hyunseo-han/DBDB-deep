@@ -27,13 +27,14 @@
 			<img class="cart-icon"
 				src="<c:url value='/images/addProductForm/simple-line-icons_basket.svg'/>" />
 		</div>
-
+		
+		<center> 
 		<div class="product-image">
 			<img src="<c:url value='/upload/${product.productPhoto}' />"
 				alt="${product.productPhoto}" />
 			<input type="file" class="input-text" name="product_photo"><br>
 		</div>
-
+		</center>
 		<div class="product-info">
 
 			<div class="input-title">물품 이름</div>

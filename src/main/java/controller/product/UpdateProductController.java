@@ -74,7 +74,7 @@ public class UpdateProductController implements Controller {
           }
       }
       else {
-    	  newFileName = request.getParameter("productPhoto");
+    	  newFileName = existingProduct.getProductPhoto();
       }
       Product product = new Product(
       		productId, Integer.parseInt(request.getParameter("regularPrice")),
