@@ -12,7 +12,7 @@
 
 function userCreate(targetUri) {
 	form.action = targetUri;
-	form.method="GET";		// register form 요청
+	form.method="GET";	// register form 요청
 	form.submit();
 }
 
