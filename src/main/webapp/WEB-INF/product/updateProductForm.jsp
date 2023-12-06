@@ -14,7 +14,11 @@
 <link rel="stylesheet" type="text/css"
     href="<c:url value='/css/addProductForm.css'/>">
 </head>
-
+<script>
+function setCategory(category) {
+    document.getElementById('categoryInput').value = category;
+}
+</script>
 <body>
 <form name="form" method="POST" class="add-form" enctype="multipart/form-data" 
 	 action="<c:url value='/product/update?id=${product.productId}' />">
@@ -52,7 +56,14 @@
 			<input class="input-text" type="text" name="deposit" value="${Math.round(product.deposit)}" /> 
 
 			<div class="input-title">물품 카테고리</div>
-			<input class="input-text" type="text" name="category" value="${product.category}" />
+			 <div class="category-div">
+			    <button class="category-buttons" type="button" onclick="setCategory('주방가전')">주방가전</button>
+			    <button class="category-buttons" type="button" onclick="setCategory('촬영장비')">촬영장비</button>
+			    <button class="category-buttons" type="button" onclick="setCategory('오락기기')">오락기기</button>
+			    <button class="category-buttons" type="button" onclick="setCategory('기타')">기타</button>
+			</div>
+			
+            <input type="hidden" name="category" id="categoryInput" value="${product.category }">
 
 			<div class="input-title">대여 진행 장소</div>
 			<input class="input-text" type="text" name="address" value="${product.address}" />
