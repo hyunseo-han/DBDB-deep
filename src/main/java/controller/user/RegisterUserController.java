@@ -46,6 +46,9 @@ public class RegisterUserController implements Controller {
             request.setAttribute("exception", e);
             request.setAttribute("user", user);
             System.out.println("회원가입 실패");
+            log.debug("ERR"); //잘 됨
+
+            log.debug(e.getMessage()); //잘 됨
             return "/user/registerForm.jsp";
         }
     }
