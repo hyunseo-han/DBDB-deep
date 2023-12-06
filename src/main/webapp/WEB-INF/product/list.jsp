@@ -18,7 +18,9 @@
 <body>
 
 	<div class="screen">
+
 		<div class="div">
+			<div class="head">빌려중고?</div>
 			<div class="input">
 				<input class="input-text" placeholder="어떤 제품을 찾고 계신가요?" type="text" />
 				<img class="search-icon"
