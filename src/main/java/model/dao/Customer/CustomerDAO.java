@@ -51,7 +51,10 @@ public class CustomerDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }finally {
+            jdbcUtil.commit();
+            jdbcUtil.close();   // resource 반환
+        }  
         
         return result;
     }
@@ -113,6 +116,7 @@ public class CustomerDAO {
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
+        	jdbcUtil.commit();
             jdbcUtil.close();
         }
         return false;
@@ -141,6 +145,7 @@ public class CustomerDAO {
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
+        	jdbcUtil.commit();
             jdbcUtil.close();
         }
         return null;

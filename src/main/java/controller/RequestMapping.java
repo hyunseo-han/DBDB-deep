@@ -38,8 +38,8 @@ public class RequestMapping {
         // 물건 삭제
         mappings.put("/product/delete", new ProductController());
         
-
-        
+        //물건 수정
+        mappings.put("/product/update", new UpdateProductController());
         logger.info("Initialized Request Mapping!");
     } 
 

@@ -36,8 +36,9 @@ public class ProductDAO {
 
     // 상품 수정
     public boolean updateProduct(Product product) throws Exception {
-        String sql = "UPDATE product SET regularPrice = ?, rentalFee = ?, description = ?, deposit = ?, rentalLocation = ?, productPhoto = ?, address = ?, detailAddress = ?, isBorrowed = ?, customerId = ? WHERE productId = ?";
-        Object[] params = { product.getRegularPrice(), product.getRentalFee(), product.getDescription(), product.getDeposit(), product.getProductPhoto(), product.getAddress(), product.getDetailAddress(), product.isBorrowed(), product.getCustomerId(), product.getProductId() };
+        String sql = "UPDATE product SET regular_price = ?, rental_fee = ?, description = ?, deposit = ?, product_photo = ?, address = ?, detail_address = ?, customerId = ?, title = ?, category = ? WHERE productId = ?";
+        //is borrowed 구현 안돼서 false로 대체
+        Object[] params = { product.getRegularPrice(), product.getRentalFee(), product.getDescription(), product.getDeposit(), product.getProductPhoto(), product.getAddress(), product.getDetailAddress(), product.getCustomerId(), product.getTitle(), product.getCategory(), product.getProductId() };
 
         jdbcUtil.setSqlAndParameters(sql, params);
 
@@ -45,6 +46,7 @@ public class ProductDAO {
             int result = jdbcUtil.executeUpdate();
             return result > 0;
         } finally {
+            jdbcUtil.commit();
             jdbcUtil.close();
         }
     }

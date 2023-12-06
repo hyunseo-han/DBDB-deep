@@ -61,7 +61,9 @@
 		<c:choose>
 		  <c:when test="${product.customerId == sessionScope.customerId}">
 				<div class="update-buttons">
-		            <button type="button">수정하기</button>
+					<a href="<c:url value='/product/update?action=update&id=${product.productId}' />">
+    					<button type="button">수정하기</button>
+					</a>
 		            <a href="<c:url value="/product/delete?action=delete&id=${product.productId}" />">
 		              <button type="button">삭제하기</button>
 		            </a>		            
