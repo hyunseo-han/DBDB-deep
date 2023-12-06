@@ -26,9 +26,18 @@ public class User {
 		this.address = address;
 	}
 	
-	//UserDAO 수정하면서 추가 함
-	public User(int int1, String string, String string2, String string3, String string4, String string5, String string6,
-            int int2, Date date) {
+
+	public User(int customerId, String name, String passwd, String address, String email, String phone, String nickname, 
+            int manner_score, Date birth_date) {
+	    this.customerId=customerId;
+	    this.name = name;
+        this.birth_date = birth_date;
+        this.nickname = nickname;
+        this.email = email;
+        this.passwd = passwd;
+        this.phone = phone;
+        this.manner_score=manner_score;
+        this.address = address;
     }
 	
 //	public User(String userId, String password, String name, String email, String phone, int commId, String commName) {

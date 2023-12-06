@@ -24,6 +24,7 @@ public class LoginController implements Controller {
             HttpSession session = request.getSession();
             session.setAttribute(UserSessionUtils.USER_SESSION_KEY, email);
             session.setAttribute("customerId", user.getCustomerId());
+            session.setAttribute("name", user.getNickname());
             System.out.println("로그인 성공");
             return "redirect:/product/list";        
         } catch (Exception e) {
