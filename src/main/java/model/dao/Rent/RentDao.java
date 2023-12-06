@@ -2,8 +2,8 @@ package model.dao.Rent;
 
 import java.time.LocalDate;
 
-import model.Customer;
 import model.Product;
+import model.User;
 import model.dao.JDBCUtil;
 
 public class RentDao {
@@ -14,7 +14,7 @@ public class RentDao {
     }
     
     // 빌린 물건 rent 테이블에 추가
-    public int addRent(Product product, Customer customer, LocalDate endDate) {
+    public int addRent(Product product, User customer, LocalDate endDate) {
         int result = 0;
         LocalDate today = LocalDate.now();
         
