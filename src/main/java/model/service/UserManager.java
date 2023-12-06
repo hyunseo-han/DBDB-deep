@@ -40,6 +40,14 @@ public class UserManager {
         return userDAO.create(user);
     }
     
+    //중복확인
+    public boolean isEmailDuplicate(String email) throws SQLException {
+        return userDAO.isEmailDuplicate(email);
+    }
+
+    public boolean isNicknameDuplicate(String nickname) throws SQLException {
+        return userDAO.isNicknameDuplicate(nickname);
+    }
     
     //다정, 센
     public User login(String email, String password)

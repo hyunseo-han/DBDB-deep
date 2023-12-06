@@ -18,11 +18,7 @@ public class RegisterUserController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         if (request.getMethod().equals("GET")) {    
             // GET request: 회원정보 등록 form 요청 
-            log.debug("RegisterForm Request");
-
-//            List<Community> commList = UserManager.getInstance().findCommunityList();   // 커뮤니티 리스트 검색
-//            request.setAttribute("commList", commList); 
-        
+            log.debug("RegisterForm Request");        
             return "/user/registerForm.jsp";   // 검색한 커뮤니티 리스트를 registerForm으로 전송       
         }   
         

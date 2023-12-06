@@ -12,7 +12,7 @@
 
 function userCreate(targetUri) {
 	form.action = targetUri;
-	form.method="GET";		// register form 요청
+	form.method="GET";	// register form 요청
 	form.submit();
 }
 
@@ -27,14 +27,13 @@ function login() {
 		form.password.focus();
 		return false;
 	}
-	<%System.out.println("로그인성공");%>
 	form.submit();
 }
 </script>
 </head>
 <body>
 	<div>
-	<form name="form" method="POST" action="<c:url value='/user/login' />"> 
+	<form name="form" method="POST" action="<c:url value='/user/login/form' />"> 
 	<p class="lo">Login</p>
 	<span class="input-wrapper">
     	<input class="rectangle1" name="email" type="text" placeholder="이메일">

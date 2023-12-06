@@ -12,8 +12,6 @@ public class UserDAO {
 	}
 
 	//회원가입
-	//?9개로 수정
-	//매너스코어 빼먹음
 	public int create(User user) throws SQLException {
 	    String sql = "INSERT INTO CUSTOMER VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";       
 	    Object[] param = new Object[] {user.getCustomerId(), user.getName(), user.getPasswd(), user.getAddress(), user.getEmail(), user.getPhone(), user.getNickname(), user.getManner_score(), user.getBirth_date()};                
@@ -31,6 +29,36 @@ public class UserDAO {
 	    }       
 	    return 0;           
 	}
+	
+	//중복확인
+	public boolean isEmailDuplicate(String email) throws SQLException {
+	    String sql = "SELECT COUNT(*) FROM CUSTOMER WHERE email=?";
+	    jdbcUtil.setSqlAndParameters(sql, new Object[] {email});  
+	    try {
+	        ResultSet rs = jdbcUtil.executeQuery();
+	        if (rs.next()) {
+	            return rs.getInt(1) > 0;
+	        }
+	    } finally {
+	        jdbcUtil.close();
+	    }
+	    return false;
+	}
+
+	public boolean isNicknameDuplicate(String nickname) throws SQLException {
+	    String sql = "SELECT COUNT(*) FROM CUSTOMER WHERE nickname=?";
+	    jdbcUtil.setSqlAndParameters(sql, new Object[] {nickname});  
+	    try {
+	        ResultSet rs = jdbcUtil.executeQuery();
+	        if (rs.next()) {
+	            return rs.getInt(1) > 0;
+	        }
+	    } finally {
+	        jdbcUtil.close();
+	    }
+	    return false;
+	}
+
 	
 	//로그인 (해당 회원이 있는지 판별)
 	public boolean login(String email, String passwd) {
