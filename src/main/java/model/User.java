@@ -31,36 +31,6 @@ public class User {
             int int2, Date date) {
     }
 	
-//	public User(String userId, String password, String name, String email, String phone, int commId, String commName) {
-//		this(userId, password, name, email, phone, commId);
-//		this.commName = commName;
-//	}
-//
-//	public User(String userId, String name, String email, String phone) {
-//		this.userId = userId;
-//		this.name = name;
-//		this.email = email;
-//		this.phone = phone;		
-//	}
-	
-	/*public void update(User updateUser) {
-        this.password = updateUser.password;
-        this.name = updateUser.name;
-        this.email = updateUser.email;
-        this.phone = updateUser.phone;
-    }*/
-	
-	
-
-	
-	/* 비밀번호 검사 */
-//	public boolean matchPassword(String password) {
-//		if (password == null) {
-//			return false;
-//		}
-//		return this.password.equals(password);
-//	}
-	
     public String getName() {
         return name;
     }
@@ -123,7 +93,7 @@ public class User {
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
-    }//Sequence 생성한다음 수정?
+    }
 
     public int getManner_score() {
         return manner_score;
@@ -132,15 +102,4 @@ public class User {
     public void setManner_score(int manner_score) {
         this.manner_score = 0;
     }
-    
-    
-//    public boolean isSameUser(String userid) {
-//        return this.userId.equals(userid);
-//    }
-//
-//	@Override
-//	public String toString() {
-//		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + ", phone="
-//				+ phone + ", commId=" + commId + "]";
-//	}	
 }

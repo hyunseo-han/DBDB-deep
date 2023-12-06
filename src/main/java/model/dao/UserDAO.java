@@ -13,8 +13,8 @@ public class UserDAO {
 
 	//회원가입
 	public int create(User user) throws SQLException {
-	    String sql = "INSERT INTO CUSTOMER VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";       
-	    Object[] param = new Object[] {user.getCustomerId(), user.getName(), user.getPasswd(), user.getAddress(), user.getEmail(), user.getPhone(), user.getNickname(), user.getManner_score(), user.getBirth_date()};                
+	    String sql = "INSERT INTO CUSTOMER (customerId, name, passwd, address, email, phone, nickname, manner_score, birth_date) VALUES (CUSTOMER_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?)";       
+	    Object[] param = new Object[] {user.getName(), user.getPasswd(), user.getAddress(), user.getEmail(), user.getPhone(), user.getNickname(), user.getManner_score(), user.getBirth_date()};                
 	    jdbcUtil.setSqlAndParameters(sql, param);   // JDBCUtil에 insert문과 매개 변수 설정
 	                    
 	    try {               

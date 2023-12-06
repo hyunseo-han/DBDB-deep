@@ -33,7 +33,7 @@ function login() {
 </head>
 <body>
 	<div>
-	<form name="form" method="POST" action="<c:url value='/user/login/form' />"> 
+	<form name="form" method="POST" action="<c:url value='/user/login' />"> 
 	<p class="lo">Login</p>
 	<span class="input-wrapper">
     	<input class="rectangle1" name="email" type="text" placeholder="이메일">
