@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.product.*;
+import controller.user.CheckDuplicateUserController;
 import controller.user.LoginController;
 import controller.user.RegisterUserController;
 
@@ -29,6 +30,7 @@ public class RequestMapping {
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/register", new RegisterUserController());
+        mappings.put("/user/checkDuplicate", new CheckDuplicateUserController()); //이상하면 지워
         
         // 물건 등록
         mappings.put("/product/addProductForm", new ForwardController("/product/addProductForm.jsp"));
