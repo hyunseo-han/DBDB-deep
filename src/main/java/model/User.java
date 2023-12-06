@@ -3,7 +3,6 @@ package model;
 import java.sql.Date;
 
 //DBDB-deep에 맞게 수정
-//파라미터 바꿔야 함
 public class User {
     private int customerId;
     private int manner_score;
@@ -26,6 +25,11 @@ public class User {
 		this.phone = phone;
 		this.address = address;
 	}
+	
+	//UserDAO 수정하면서 추가 함
+	public User(int int1, String string, String string2, String string3, String string4, String string5, String string6,
+            int int2, Date date) {
+    }
 	
 //	public User(String userId, String password, String name, String email, String phone, int commId, String commName) {
 //		this(userId, password, name, email, phone, commId);
@@ -57,7 +61,7 @@ public class User {
 //		return this.password.equals(password);
 //	}
 	
-	public String getName() {
+    public String getName() {
         return name;
     }
 
@@ -118,8 +122,8 @@ public class User {
     }
 
     public void setCustomerId(int customerId) {
-        this.customerId = 999;
-    }
+        this.customerId = customerId;
+    }//Sequence 생성한다음 수정?
 
     public int getManner_score() {
         return manner_score;

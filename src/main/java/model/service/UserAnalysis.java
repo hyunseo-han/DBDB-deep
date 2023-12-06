@@ -1,25 +1,27 @@
-//이건 뭐하는 코드여..?
-package model.service;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import model.User;
-import model.dao.UserDAO;
-
-// an example business class
-public class UserAnalysis {
-	private UserDAO dao;
-	
-	public UserAnalysis() {}
-	
-	public UserAnalysis(UserDAO dao) {
-		super();
-		this.dao = dao;
-	}
-
-	// an example business method
+////이건 뭐하는 코드여..?
+//
+//package model.service;
+//
+//import java.util.ArrayList;
+//import java.util.Iterator;
+//import java.util.List;
+//
+//import model.User;
+//import model.dao.UserDAO;
+//
+//// an example business class
+//public class UserAnalysis {
+//	private UserDAO dao;
+//	
+//	public UserAnalysis() {}
+//	
+//	public UserAnalysis(UserDAO dao) {
+//		super();
+//		this.dao = dao;
+//	}
+//    //에러나면 위에 주석 풀어
+//
+//	// an example business method
 //	public List<User> recommendFriends(String userId) throws Exception {
 //		User thisuser = dao.findUser(userId);
 //		if (thisuser == null) {
@@ -46,5 +48,5 @@ public class UserAnalysis {
 //		}
 //		return friends;
 //	}
-
-}
+//
+//}
