@@ -7,7 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/login.css'/>">
+	href="<c:url value='/css/global.css'/>">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/css/user/login.css'/>">
 <script>
 
 function userCreate(targetUri) {
@@ -39,7 +41,7 @@ function login() {
     	<input class="rectangle1" name="email" type="text" placeholder="이메일">
 	</span>
 	<span class="input-wrapper">
-    	<input class="rectangle2" name="password" type="password" placeholder="password 입력 ">
+    	<input class="rectangle2" name="password" type="password" placeholder="비밀번호 입력">
 	</span>
 
     <input id="greySignup" type="button" value="회원가입"

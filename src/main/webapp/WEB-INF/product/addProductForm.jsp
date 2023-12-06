@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css"
     href="<c:url value='/css/global.css'/>">
 <link rel="stylesheet" type="text/css"
-    href="<c:url value='/css/addProductForm.css'/>">
+    href="<c:url value='/css/product/addProductForm.css'/>">
 <script>
 function productCreate() {
     if (myform.title.value == "") {
