@@ -26,7 +26,13 @@
 	top: 140px;
     margin:100px;
     padding-left: 30px;
-
+    
+    font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 33.7138px;
+	line-height: 41px;
+	
 /* Â Â Â Â left:Â 300px;
 Â Â Â Â top:Â 50px; */
 	background: #EDEDED;
@@ -41,6 +47,11 @@
 	left: 184px;
 	top: 290px;
     margin:100px;
+    font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 33.7138px;
+	line-height: 41px;
 /* Â Â Â Â left:Â 300px;
 Â Â Â Â top:Â 50px; */
     padding-left: 30px;
@@ -48,6 +59,22 @@
 	border-radius: 15px;
     border:none
 	}
+	
+	.input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.input-wrapper input {
+    /* ¿©±â¿¡ ½ºÅ¸ÀÏÀ» Ãß°¡ÇÏ¼¼¿ä */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 33.7138px;
+    line-height: 41px;
+    /* ³ª¸ÓÁö ½ºÅ¸ÀÏµéµµ Ãß°¡ÇÏ¼¼¿ä */
+}
+	
 
 input::placeholder{
     font-family: 'Inter';
@@ -77,7 +104,7 @@ input::placeholder{
 	width: 94px;
 	height: 31px;
 	left: 520px;
-	top: 510px;
+	top: 540px;
 
 	font-family: 'Inter';
 	font-style: normal;
@@ -97,7 +124,7 @@ input::placeholder{
     width: 149px;
     height: 31px;
     left: 670px;
-    top: 510px;
+    top: 540px;
 
     font-family: 'Inter';
     font-style: normal;

@@ -36,8 +36,13 @@ function login() {
 	<div>
 	<form name="form" method="POST" action="<c:url value='/user/login' />"> 
 	<p class="lo">Login</p>
-        <span><input class="rectangle1" name="email" type="text" placeholder="이메일"></span>
-        <span><input class="rectangle2" name="password" type="text" placeholder="비밀번호"></span>
+	<span class="input-wrapper">
+    	<input class="rectangle1" name="email" type="text" placeholder="이메일">
+	</span>
+	<span class="input-wrapper">
+    	<input class="rectangle2" name="password" type="password" placeholder="비밀번호">
+	</span>
+
     <input id="greySignup" type="button" value="회원가입"
 			onClick="userCreate('<c:url value='/user/register'/>')">
     <a href="#" class="greypassword">비밀번호찾기</a>

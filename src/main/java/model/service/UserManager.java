@@ -54,9 +54,6 @@ public class UserManager {
                 throw new PasswordMismatchException("로그인에 실패했습니다.");
             }
             
-//          if (!user.matchPassword(password)) {
-//              
-//          }
             return user;
         }
 

@@ -29,17 +29,18 @@ public class RegisterUserController implements Controller {
         String birthDateString = request.getParameter("birth_date");
         java.sql.Date birthDate = java.sql.Date.valueOf(birthDateString); // 문자열을 java.sql.Date로 변환
         
+        
         // POST request (회원정보가 parameter로 전송됨)
         User user = new User(
                 request.getParameter("name"),
                 birthDate,
                 request.getParameter("nickname"),
                 request.getParameter("email"),
-                request.getParameter("passwd"),
+                request.getParameter("password"),
                 request.getParameter("phone"),
                 request.getParameter("address"));
-        user.setManner_score(0); 
-        user.setCustomerId(0);
+        		user.setManner_score(0); 
+        		user.setCustomerId(0);
         log.debug("Create User : {}", user);
 
         try {
