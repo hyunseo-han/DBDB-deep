@@ -12,7 +12,7 @@ public class LoginController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String email = request.getParameter("email");
-        String passwd = request.getParameter("passwd");
+        String passwd = request.getParameter("password");
         
         try {
             // 모델에 로그인 처리를 위임
