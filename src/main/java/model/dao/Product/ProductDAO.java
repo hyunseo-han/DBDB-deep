@@ -16,23 +16,29 @@ public class ProductDAO {
 
     // 상품 등록
     public boolean addProduct(Product product) throws Exception {
-        String sql = "INSERT INTO products (productId, regularPrice, rentalFee, description, deposit, rentalLocation, productPhoto, address, detailAddress, isBorrowed, customerId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        Object[] params = { product.getProductId(), product.getRegularPrice(), product.getRentalFee(), product.getDescription(), product.getDeposit(), product.getRentalLocation(), product.getProductPhoto(), product.getAddress(), product.getDetailAddress(), product.isBorrowed(), product.getCustomerId() };
+        String sql = "INSERT INTO product (productId, regular_price, rental_fee, description, deposit, product_photo, address, detail_address, is_borrowed, customerid, title, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        Object[] params = { product.getProductId(), product.getRegularPrice(), product.getRentalFee(), product.getDescription(), product.getDeposit(), product.getProductPhoto(), product.getAddress(), product.getDetailAddress(), product.isBorrowed(), product.getCustomerId(), product.getTitle(), product.getCategory() };
 
         jdbcUtil.setSqlAndParameters(sql, params);
 
         try {
             int result = jdbcUtil.executeUpdate();
             return result > 0;
-        } finally {
-            jdbcUtil.close();
-        }
+        } catch (Exception ex) {
+            jdbcUtil.rollback();
+            ex.printStackTrace();
+        } finally {     
+            jdbcUtil.commit();
+            jdbcUtil.close();   // resource 반환
+        }   
+        return false;
     }
 
     // 상품 수정
     public boolean updateProduct(Product product) throws Exception {
-        String sql = "UPDATE products SET regularPrice = ?, rentalFee = ?, description = ?, deposit = ?, rentalLocation = ?, productPhoto = ?, address = ?, detailAddress = ?, isBorrowed = ?, customerId = ? WHERE productId = ?";
-        Object[] params = { product.getRegularPrice(), product.getRentalFee(), product.getDescription(), product.getDeposit(), product.getRentalLocation(), product.getProductPhoto(), product.getAddress(), product.getDetailAddress(), product.isBorrowed(), product.getCustomerId(), product.getProductId() };
+        String sql = "UPDATE product SET regular_price = ?, rental_fee = ?, description = ?, deposit = ?, product_photo = ?, address = ?, detail_address = ?, customerId = ?, title = ?, category = ? WHERE productId = ?";
+        //is borrowed 구현 안돼서 false로 대체
+        Object[] params = { product.getRegularPrice(), product.getRentalFee(), product.getDescription(), product.getDeposit(), product.getProductPhoto(), product.getAddress(), product.getDetailAddress(), product.getCustomerId(), product.getTitle(), product.getCategory(), product.getProductId() };
 
         jdbcUtil.setSqlAndParameters(sql, params);
 
@@ -40,27 +46,33 @@ public class ProductDAO {
             int result = jdbcUtil.executeUpdate();
             return result > 0;
         } finally {
+            jdbcUtil.commit();
             jdbcUtil.close();
         }
     }
 
     // 상품 삭제
     public boolean deleteProduct(int productId) throws Exception {
-        String sql = "DELETE FROM products WHERE productId = ?";
+        String sql = "DELETE FROM product WHERE productId = ?";
         jdbcUtil.setSqlAndParameters(sql, new Object[] { productId });
 
         try {
             int result = jdbcUtil.executeUpdate();
             return result > 0;
-        } finally {
-            jdbcUtil.close();
-        }
+        } catch (Exception ex) {
+            jdbcUtil.rollback();
+            ex.printStackTrace();
+        } finally {     
+            jdbcUtil.commit();
+            jdbcUtil.close();   // resource 반환
+        }  
+        return false;
     }
 
     // 상품 조회
     public List<Product> getAllProducts() throws SQLException {
         List<Product> productList = new ArrayList<>();
-        String sql = "SELECT * FROM products";
+        String sql = "SELECT * FROM product";
         jdbcUtil.setSqlAndParameters(sql, null);
 
         try {
@@ -68,16 +80,18 @@ public class ProductDAO {
             while (rs.next()) {
                 Product product = new Product(
                     rs.getInt("productId"),
-                    rs.getDouble("regularPrice"),
-                    rs.getDouble("rentalFee"),
+                    rs.getInt("regular_price"),
+                    rs.getInt("rental_fee"),
                     rs.getString("description"),
-                    rs.getDouble("deposit"),
-                    rs.getString("rentalLocation"),
-                    rs.getString("productPhoto"),
+                    rs.getInt("deposit"),
+//                    rs.getString("rentalLocation"),
+                    rs.getString("product_photo"),
                     rs.getString("address"),
-                    rs.getString("detailAddress"),
-                    rs.getBoolean("isBorrowed"),
-                    rs.getInt("customerId")
+                    rs.getString("detail_address"),
+                    rs.getBoolean("is_borrowed"),
+                    rs.getInt("customerId"),
+                    rs.getString("title"),
+                    rs.getString("category")
                 );
                 productList.add(product);
             }
@@ -85,5 +99,35 @@ public class ProductDAO {
             jdbcUtil.close();
         }
         return productList;
+    }
+    
+    // 특정 상품 조회 
+    public Product getProductById(int productId) throws SQLException {
+        String sql = "SELECT * FROM product WHERE productId = ?";
+        jdbcUtil.setSqlAndParameters(sql, new Object[] { productId });
+
+        try {
+            ResultSet rs = jdbcUtil.executeQuery();
+            if (rs.next()) {
+                Product product = new Product(
+                    rs.getInt("productId"),
+                    rs.getInt("regular_price"),
+                    rs.getInt("rental_fee"),
+                    rs.getString("description"),
+                    rs.getInt("deposit"),
+                    rs.getString("product_photo"),
+                    rs.getString("address"),
+                    rs.getString("detail_address"),
+                    rs.getBoolean("is_borrowed"),
+                    rs.getInt("customerId"),
+                    rs.getString("title"),
+                    rs.getString("category")
+                );
+                return product;
+            }
+        } finally {
+            jdbcUtil.close();
+        }
+        return null; // 상품을 찾지 못한 경우 null 반환
     }
 }

@@ -1,4 +1,3 @@
-<!-- UserMan3코드에서 회원가입 버튼만 남겨놓음! -->
 <%@page contentType="text/html; charset=utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 

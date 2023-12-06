@@ -1,0 +1,135 @@
+.product-detail-container {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.product-detail-container .header {
+	background-color: #05b70c;
+	display: flex;
+	width: 100%;
+	height: 80px;
+	margin-bottom: 100px;
+	justify-content: center;
+	align-items: center;
+}
+
+.header .header-text {
+	color: white;
+	font-size: 36px;
+	font-weight: bold;
+	text-align: center;
+	margin: auto;
+}
+
+.header .cart-icon {
+	height: 45px;
+	width: 53px;
+	padding-right: 15px;
+}
+
+.header .back-icon {
+	height: 45px;
+	width: 53px;
+	padding-left: 15px;
+
+}
+
+.product-image img {
+	width: 400px;
+	height: 400px;
+	flex-shrink: 0;
+	border: 1px solid #ddd;
+
+	margin-bottom: 100px;
+}
+
+.product-info {
+	text-align: left;
+}
+
+.product-text {
+	color: #212529;
+	font-size: 25px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+
+	border: 1px solid #05b70c;
+	padding-bottom: 10px;
+	border-width: 0 0 2px;
+	width: 1000px;
+}
+
+.product-detail {
+	color: #212529;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+
+	padding-top: 15px;
+	padding-bottom: 40px;
+}
+
+.category {
+	display: flex;
+	width: 150px;
+	height: 50px;
+	padding: 17px 26.189px 16.701px 27px;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 1;
+
+	color: white;
+	border-radius: 6px;
+	background: #05B70C;
+	
+	margin-top: 10px;
+	margin-bottom : 40px;
+}
+
+
+.product-buttons {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.product-buttons button {
+	padding: 10px 20px;
+	background-color: #5cb85c;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 20px;
+	width: 250px;
+    height: 50px;
+    margin-bottom: 30px;
+}
+
+.product-buttons button:hover {
+	background-color: #4cae4c;
+}
+
+.update-buttons button{
+	padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 15px;
+    width: 150px;
+    height: 50px;
+    margin-bottom: 30px;
+}
+
+.update-buttons button:hover {
+    background-color: #4cae4c;
+}

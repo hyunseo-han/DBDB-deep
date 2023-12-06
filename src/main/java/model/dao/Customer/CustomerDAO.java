@@ -51,7 +51,10 @@ public class CustomerDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }finally {
+            jdbcUtil.commit();
+            jdbcUtil.close();   // resource 반환
+        }  
         
         return result;
     }
@@ -101,7 +104,7 @@ public class CustomerDAO {
     }
     
     //customerId에 해당하는 회원이 존재하는지 판단
-    public boolean existingUser(String customerId) throws SQLException {
+    public boolean existingUser(int customerId) throws SQLException {
         String sql = "SELECT count(*) FROM CUSTOMER WHERE customerId=?";      
         jdbcUtil.setSqlAndParameters(sql, new Object[] {customerId});   
         try {
@@ -113,8 +116,40 @@ public class CustomerDAO {
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
+        	jdbcUtil.commit();
             jdbcUtil.close();
         }
         return false;
     }
+    
+    public Customer findUserByEmail(String email) throws SQLException {
+        Customer customer = null;
+        
+        String sql = "SELECT * FROM CUSTOMER WHERE email = ?";
+        jdbcUtil.setSqlAndParameters(sql, new Object[] {email});
+        try {
+            ResultSet rs = jdbcUtil.executeQuery(); 
+            if (rs.next()) {
+                customer = new Customer(
+                        rs.getInt("customerId"),
+                        rs.getString("name"),
+                        rs.getString("passwd"),
+                        rs.getString("address"),
+                        rs.getString("email"),
+                        rs.getString("phone"),
+                        rs.getString("nickname"),
+                        rs.getInt("manner_score"),
+                        rs.getDate("birth_date").toLocalDate());  
+                return customer;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+        	jdbcUtil.commit();
+            jdbcUtil.close();
+        }
+        return null;
+    }
+    
+   
 }
