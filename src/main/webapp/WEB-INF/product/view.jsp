@@ -38,13 +38,13 @@
 			<p class="product-detail">${product.description}</p>
 
 			<p class="product-text">물품의 정가</p>
-			<p class="product-detail">${product.regularPrice}원</p>
+			<p class="product-detail">${Math.round(product.regularPrice)}원</p>
 
 			<p class="product-text">대여비</p>
-			<p class="product-detail">${product.rentalFee}원</p>
+			<p class="product-detail">${Math.round(product.rentalFee)}원</p>
 
 			<p class="product-text">보증금</p>
-			<p class="product-detail">${product.deposit}원</p>
+			<p class="product-detail">${Math.round(product.deposit)}원</p>
 
 			<p class="product-text">물품 카테고리</p>
 			<p class="category">${product.category}</p>
