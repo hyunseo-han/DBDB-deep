@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.product.*;
 import controller.user.LoginController;
+import controller.user.RegisterUserController;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);

@@ -12,12 +12,13 @@ public class LoginController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        String passwd = request.getParameter("passwd");
         
         try {
             // 모델에 로그인 처리를 위임
             UserManager manager = UserManager.getInstance();
-            User user = manager.login(email, password);manager.login(email, password);
+            User user = manager.login(email, passwd);
+//            manager.login(email, password);
     
             // 세션에 사용자 이이디 저장
             HttpSession session = request.getSession();
