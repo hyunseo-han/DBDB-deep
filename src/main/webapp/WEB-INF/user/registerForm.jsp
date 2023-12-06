@@ -33,7 +33,7 @@
         }
 
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/DBDB-deep/user/checkDuplicate', true);
+        xhr.open('POST', '/DBDB-deep/user/checkDuplicate', true); //경로 수정해서 에러 해결
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
@@ -79,7 +79,7 @@
 				placeholder="휴대폰번호 ex)010-1234-1234">
 			<div class="gap"></div>
 			<input type="text" style="width: 240" name="address"
-				placeholder="거주지 ex)서울특별시 성북구 하월곡동 부리부리">
+				placeholder="거주지 ex)서울특별시 성북구 하월곡동">
 			<div class="gap"></div>
 			<div class="left">
 				<input type='checkbox' value='selectall' onclick='selectAll(this)' />
