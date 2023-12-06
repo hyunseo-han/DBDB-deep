@@ -5,9 +5,6 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import controller.comm.CreateCommunityController;
-//import controller.user.*;
-//import controller.comm.*;
 import controller.product.*;
 import controller.user.LoginController;
 
@@ -27,9 +24,10 @@ public class RequestMapping {
         // 물건 상세 보기 
         mappings.put("/product/view", new ViewProductController());
         
-        // 로그인
+        // 회원가입, 로그인
         mappings.put("/user/loginForm", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
+        mappings.put("/user/register", new RegisterUserController());
         
         // 물건 등록
         mappings.put("/product/addProductForm", new ForwardController("/product/addProductForm.jsp"));

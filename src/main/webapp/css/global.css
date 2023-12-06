@@ -135,15 +135,11 @@ table {
   border-spacing: 0;
 }
 
-input {
+input:focus {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  outline: none;
-
-/*   &:focus {
-    outline: none;
-  } */
+  outline: none;  
 }
 
 select {
