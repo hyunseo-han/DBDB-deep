@@ -34,9 +34,10 @@ public class UserManager {
     }
     
     public int create(User user) throws SQLException, ExistingUserException {
-        if (userDAO.existingUser(user.getCustomerId()) == true) {
-            throw new ExistingUserException(user.getCustomerId() + "는 존재하는 아이디입니다.");
-        }
+//        if (userDAO.existingUser(user.getCustomerId()) == true) {
+//            throw new ExistingUserException(user.getCustomerId() + "는 존재하는 아이디입니다.");
+//        }
+        // customerId가 자동 생성이라 우리가 저장하는 값이 없어서 검사를 할 필요 없어서 지웠어요!!! 
         return userDAO.create(user);
     }
     
