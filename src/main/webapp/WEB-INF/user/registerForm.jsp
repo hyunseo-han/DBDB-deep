@@ -5,8 +5,8 @@
 <head>
 <title>회원가입</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/register.css' />"
-	type="text/css">
+<link rel=stylesheet href="<c:url value='/css/user/register.css' />"
+	type="text/css" >
 <script>
 	function selectAll(selectAll)  {
 	  const checkboxes 

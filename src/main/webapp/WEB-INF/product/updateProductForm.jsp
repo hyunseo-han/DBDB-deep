@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/product/view.css'/>">
 <link rel="stylesheet" type="text/css"
-    href="<c:url value='/css/addProductForm.css'/>">
+    href="<c:url value='/css/product/addProductForm.css'/>">
 </head>
 <script>
 function setCategory(category) {
@@ -71,8 +71,8 @@ function setCategory(category) {
 			<div class="input-title">대여 상세 주소</div>
 			<input class="input-text" type="text" name="detailAddress" value="${product.detailAddress}" />
 
-			<div class="input-title">대여 방식 </div>
-			<p class="category">ㄷㄷㄷㄷㄷㄷ</p>
+<!-- 			<div class="input-title">대여 방식 </div>
+			<p class="category">ㄷㄷㄷㄷㄷㄷ</p> -->
 		
     		<input type="hidden" name="customerId" value="${product.customerId}" />
 			

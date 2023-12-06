@@ -7,7 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/login.css'/>">
+	href="<c:url value='/css/global.css'/>">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/css/user/login.css'/>">
 <script>
 
 function userCreate(targetUri) {
