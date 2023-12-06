@@ -14,15 +14,16 @@
 	type="text/css">
 </head>
 <body>
-    
-	<div class="screen">	
-		<div class="div">			  
+
+	<div class="screen">
+		<div class="div">
 			<div class="input">
 				<input class="input-text" placeholder="어떤 제품을 찾고 계신가요?" type="text" />
 				<img class="search-icon"
 					src="<c:url value='/images/product/searchicon.svg'/>" />
 			</div>
-			<a class="go-addForm" href="<c:url value='/product/addProductForm'/>"> 물품 등록하러 가기 </a>      
+			<a class="go-addForm" href="<c:url value='/product/addProductForm'/>">
+				물품 등록하러 가기 </a>
 
 			<div class="category-wrapper">
 				<div class="category-text">주방가전</div>
@@ -36,10 +37,10 @@
 					<a href="<c:url value="/product/view?id=${product.productId}" />">
 						<div class="goods">
 							<img class="goods-img"
-								src="<c:url value="/upload/${product.productPhoto}" />" 
-								alt="이미지 없슈 : ${product.title}"/>
+								src="<c:url value="/upload/${product.productPhoto}" />"
+								alt="이미지 없슈 : ${product.title}" />
 							<div class="goods-name">${product.title}</div>
-							<div class="goods-price">${product.rentalFee}원</div>
+							<div class="goods-price">${Math.round(product.rentalFee)}원</div>
 							<div class="goods-place">${product.address}</div>
 						</div>
 					</a>
