@@ -58,8 +58,8 @@
 			<p class="product-detail">${product.address}
 				${product.detailAddress}</p>
 
-			<p class="product-text">대여 방식</p>
-			<p class="category">ㄷㄷㄷㄷㄷㄷ</p>
+<!-- 			<p class="product-text">대여 방식</p>
+			<p class="category">ㄷㄷㄷㄷㄷㄷ</p> -->
 
 		</div>
 		<c:choose>
