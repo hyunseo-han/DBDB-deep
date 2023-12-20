@@ -24,6 +24,9 @@ public class RequestMapping {
         // 물건 전체 보기 (메인 페이지)
         mappings.put("/product/list", new ProductController());
         
+        // 물건 검색 (메인 페이지)
+        mappings.put("/product/search", new SearchController());
+        
         // 물건 상세 보기 
         mappings.put("/product/view", new ViewProductController());
         

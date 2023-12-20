@@ -41,5 +41,9 @@ public class ProductManager {
     public Product getProductById(int productId) throws SQLException, Exception {
         return productDAO.getProductById(productId);
     }
+    
+    public List<Product> searchProducts(String keyword) throws SQLException, Exception{
+        return productDAO.searchProducts(keyword);
+    }
 
 }
