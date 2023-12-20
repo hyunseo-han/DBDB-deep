@@ -55,49 +55,49 @@
 	<form name="form" method="POST"
 		action="<c:url value='/user/register' />">
 		<div class="container">
-			<h1 class="title">본인 정보를 입력해주세요</h1>
-			<input type="text" style="width: 240" name="name" placeholder="이름">
+			<b><p class="title">본인 정보를 입력해주세요</p></b>
+			<input type="text" style="width: 500" name="name" placeholder="이름">
 			<div class="gap"></div>
-			<input type="date" style="width: 240" name="birth_date"
+			<input type="date" style="width: 500" name="birth_date"
 				placeholder="생년월일">
 			<div class="gap"></div>
 
-			<input type="text" style="width: 170" name="nickname"
+			<input type="text" style="width: 390" name="nickname"
 				placeholder="닉네임">
 			<button class="checkBtn" onclick="checkDuplicate(event,'nickname')">중복
 				확인</button>
 			<div class="gap"></div>
-			<input type="text" style="width: 170" name="email" placeholder="이메일">
+			<input type="text" style="width: 390" name="email" placeholder="이메일">
 			<button class="checkBtn" onclick="checkDuplicate(event, 'email')">중복
 				확인</button>
 
 			<div class="gap"></div>
-			<input type="text" style="width: 240" name="passwd"
+			<input type="text" style="width: 500" name="passwd"
 				placeholder="비밀번호">
 			<div class="gap"></div>
-			<input type="text" style="width: 240" name="phone"
+			<input type="text" style="width: 500" name="phone"
 				placeholder="휴대폰번호 ex)010-1234-1234">
 			<div class="gap"></div>
-			<input type="text" style="width: 240" name="address"
+			<input type="text" style="width: 500" name="address"
 				placeholder="거주지 ex)서울특별시 성북구 하월곡동">
 			<div class="gap"></div>
 			<div class="left">
-				<input type='checkbox' value='selectall' onclick='selectAll(this)' />
-				<b>전체 선택</b>
+				<input type='checkbox' value='selectall' onclick='selectAll(this)' class="checkBoxInput"/>
+				<b style="font-size: 30px;">전체 선택</b>
 				<div class="gap2"></div>
-				<input type='checkbox' name="check" /> 빌려중고야? 이용약관 (필수)
+				<input type='checkbox' name="check" class="checkBoxInput"/> <span>빌려중고야? 이용약관 (필수)</span>
 				<div class="gap2"></div>
-				<input type='checkbox' name="check" /> 개인정보 수집 이용 동의 (필수)
+				<input type='checkbox' name="check" class="checkBoxInput"/> <span>개인정보 수집 이용 동의 (필수)</span>
 				<div class="gap2"></div>
-				<input type='checkbox' name="check" /> 휴면 개인정보 분리보관 동의 (필수)
+				<input type='checkbox' name="check" class="checkBoxInput"/> <span>휴면 개인정보 분리보관 동의 (필수)</span>
 				<div class="gap2"></div>
-				<input type='checkbox' name="check" /> 위치정보 이용약관 동의 (필수)
+				<input type='checkbox' name="check" class="checkBoxInput"/> <span>위치정보 이용약관 동의 (필수)</span>
 				<div class="gap2"></div>
-				<input type='checkbox' name="check" /> 개인정보 수집 이용 동의 (선택)
+				<input type='checkbox' name="check" class="checkBoxInput"/> <span>개인정보 수집 이용 동의 (선택)</span>
 				<div class="gap2"></div>
-				<input type='checkbox' name="check" /> 마케팅 수신 동의 (선택)
+				<input type='checkbox' name="check" class="checkBoxInput"/> <span>마케팅 수신 동의 (선택)</span>
 				<div class="gap2"></div>
-				<input type='checkbox' name="check" /> 개인정보 광고활용 동의 (선택)
+				<input type='checkbox' name="check" class="checkBoxInput"/> <span>개인정보 광고활용 동의 (선택)</span>
 			</div>
 			<div class="gap2"></div>
 			<div class="gap2"></div>

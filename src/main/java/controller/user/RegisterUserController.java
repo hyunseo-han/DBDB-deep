@@ -53,4 +53,3 @@ public class RegisterUserController implements Controller {
         }
     }
 }
-
