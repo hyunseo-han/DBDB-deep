@@ -130,4 +130,40 @@ public class ProductDAO {
         }
         return null; // 상품을 찾지 못한 경우 null 반환
     }
+
+    
+    // 물건 검색 
+    public List<Product> searchProducts(String keyword) throws SQLException  {
+        List<Product> productList = new ArrayList<>();
+        String query = "SELECT * FROM product WHERE title LIKE ?";
+        jdbcUtil.setSqlAndParameters(query, new Object[] {"%" + keyword + "%"});
+
+        try {
+            ResultSet rs = jdbcUtil.executeQuery();
+            while (rs.next()) {
+                Product product = new Product(
+                    rs.getInt("productId"),
+                    rs.getInt("regular_price"),
+                    rs.getInt("rental_fee"),
+                    rs.getString("description"),
+                    rs.getInt("deposit"),
+                    rs.getString("product_photo"),
+                    rs.getString("address"),
+                    rs.getString("detail_address"),
+                    rs.getBoolean("is_borrowed"),
+                    rs.getInt("customerId"),
+                    rs.getString("title"),
+                    rs.getString("category")
+                );
+                productList.add(product);
+            }
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }finally {
+            jdbcUtil.close();
+        }
+        return productList;
+
+    }
 }
