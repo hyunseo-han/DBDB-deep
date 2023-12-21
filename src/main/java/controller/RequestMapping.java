@@ -11,6 +11,7 @@ import controller.product.*;
 import controller.user.CheckDuplicateUserController;
 import controller.user.LoginController;
 import controller.user.LogoutController;
+import controller.user.MyPageController;
 import controller.user.RegisterUserController;
 
 public class RequestMapping {
@@ -35,12 +36,16 @@ public class RequestMapping {
         // 물건 대여하기
         mappings.put("/product/order", new OrderController());
         
-        // 회원가입, 로그인, 로그아
+        // 회원가입, 로그인, 로그아웃  
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
         mappings.put("/user/register", new RegisterUserController());
         mappings.put("/user/checkDuplicate", new CheckDuplicateUserController()); //이상하면 지워
         mappings.put("/user/logout", new LogoutController());
+        
+        
+        // 마이페이지 
+        mappings.put("/mypage", new MyPageController());
         
         // 물건 등록
         mappings.put("/product/addProductForm", new ForwardController("/product/addProductForm.jsp"));

@@ -51,7 +51,7 @@
 						님 
 						
 						<!-- 	마이페이지  -->
-						<a class="mypage" href="<c:url value='list'/>">  <img class="person-icon"
+						<a class="mypage" href="<c:url value='/mypage'/>">  <img class="person-icon"
 							src="<c:url value='/images/product/person.svg'/>" />
 						</a> 
 						
