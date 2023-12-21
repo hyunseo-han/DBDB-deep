@@ -40,12 +40,14 @@ public class CartItemDAO {
 
 //    장바구니 아이템 저장 
     public int addCartItem(CartItem item) throws SQLException {
-        String sql = "INSERT INTO CARTITEM (CUSTOMERID, PRODUCTID, QUANTITY, RENTAL_FEE) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO CartItem (customerId, productId, quantity, rental_fee) VALUES (?, ?, ?, ?)";
         Object[] param = new Object[] {item.getCustomerId(), item.getProductId(), item.getQuantity(), item.getRentalFee()};
+       
         jdbcUtil.setSqlAndParameters(sql, param);
 
         try {
             int result = jdbcUtil.executeUpdate();
+            System.out.println(result+"%%%%%%%%%%%%%%%");
             return result;
         } catch (Exception ex) {
             jdbcUtil.rollback();
