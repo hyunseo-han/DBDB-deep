@@ -1,5 +1,6 @@
 package controller.product;
 
+//세니가 만든 OrderController	
 import java.time.LocalDate;
 
 import javax.servlet.http.HttpServletRequest;
@@ -66,9 +67,6 @@ public class OrderController implements Controller {
             
             return "redirect:/product/list"; // 대여 실패 시 상품 리스트 페이지로 리디렉션
         }
-        
-        
-        
 //        return "redirect:/product/list";
                
     }
