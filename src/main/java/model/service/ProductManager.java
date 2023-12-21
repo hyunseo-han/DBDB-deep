@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import model.Product;
+import model.Rent;
 import model.dao.Product.ProductDAO;
 
 public class ProductManager {
@@ -41,5 +42,10 @@ public class ProductManager {
     public Product getProductById(int productId) throws SQLException, Exception {
         return productDAO.getProductById(productId);
     }
+    
+    public List<Product> searchProducts(String keyword) throws SQLException, Exception{
+        return productDAO.searchProducts(keyword);
+    }
+    
 
 }

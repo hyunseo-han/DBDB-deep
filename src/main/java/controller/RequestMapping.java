@@ -5,6 +5,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import controller.cartItem.AddCartItemController;
+import controller.cartItem.CartItemController;
 import controller.product.*;
 import controller.user.CheckDuplicateUserController;
 import controller.user.LoginController;
@@ -25,8 +27,14 @@ public class RequestMapping {
         // 물건 전체 보기 (메인 페이지)
         mappings.put("/product/list", new ProductController());
         
+        // 물건 검색 (메인 페이지)
+        mappings.put("/product/search", new SearchController());
+        
         // 물건 상세 보기 
         mappings.put("/product/view", new ViewProductController());
+        
+        // 물건 대여하기
+        mappings.put("/product/order", new OrderController());
         
         // 회원가입, 로그인, 로그아
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
@@ -47,6 +55,12 @@ public class RequestMapping {
         
         //현서수정 
         mappings.put("/mypage/borrowedProduct", new OrderController());
+      
+        //장바구니
+//        mappings.put("/user/cartItem", new CartItemController());
+        mappings.put("/user/cartItem", new ForwardController("/user/cartItem.jsp"));
+        
+        mappings.put("/user/cartItem/add", new AddCartItemController());
     } 
 
     public Controller findController(String uri) {	

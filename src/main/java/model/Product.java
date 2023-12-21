@@ -42,7 +42,7 @@ public class Product {
 //        this.productId = productId;
 //    }
 
-    public double getRegularPrice() {
+    public int getRegularPrice() {
         return regularPrice;
     }
 
@@ -50,7 +50,7 @@ public class Product {
         this.regularPrice = regularPrice;
     }
 
-    public double getRentalFee() {
+    public int getRentalFee() {
         return rentalFee;
     }
 
@@ -66,7 +66,7 @@ public class Product {
         this.description = description;
     }
 
-    public double getDeposit() {
+    public int getDeposit() {
         return deposit;
     }
 
