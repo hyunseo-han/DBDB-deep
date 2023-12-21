@@ -24,16 +24,19 @@
 	
 	
 	<c:forEach var="cartItem" items="${cartItems}">
-        <p>${cartItem.productName} - Quantity: ${cartItem.quantity} - Rental Fee: ${cartItem.rentalFee}</p>   
-		<div class="container">  
-			<img class="trash" src="../images/cartItem/trash.png">   
+		<div class="container">
+			<a href="<c:url value='/user/cartItem/delete?productId=${cartItem.productId }'/>">  
+				<img class="trash" src="../images/cartItem/trash.png">   
+			</a>			
 			<div class="whiteRec">
-    			<div class="itemInfo">
-        			<img class="itemImg" src="../images/cartItem/cart.png" alt="상품 이미지">
-        			${cartItem.productName}<br>
-        			${cartItem.rentalFee } <br>
-    				대구 수성 중동
-    			</div>
+				<a href="<c:url value='/product/view?id=${cartItem.productId }'/>">
+    				<div class="itemInfo">    	
+    					<img class="itemImg" src="<c:url value='/upload/${cartItem.productPhoto}' />" alt="${product.title}" />
+        				${cartItem.title}<br>
+        				${cartItem.rentalFee }원 <br>
+    					${cartItem.address}
+    				</div>				
+    			</a>
 			</div>
 		</div>
 	 </c:forEach>
