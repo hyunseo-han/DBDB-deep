@@ -47,13 +47,13 @@ function setCategory(category) {
 			<input class="input-text" type="text" name="description" value="${product.description}" />
 
 			<div class="input-title">물품의 정가</div>
-			<input class="input-text" type="text" name="regularPrice" value="${Math.round(product.regularPrice)}" /> 
+			<input class="input-text" type="text" name="regularPrice" value="${product.regularPrice}" /> 
 
 			<div class="input-title">대여비</div>
-			<input class="input-text" type="text" name="rentalFee" value="${Math.round(product.rentalFee)}" /> 
+			<input class="input-text" type="text" name="rentalFee" value="${product.rentalFee}" /> 
 
 			<div class="input-title">보증금</div>
-			<input class="input-text" type="text" name="deposit" value="${Math.round(product.deposit)}" /> 
+			<input class="input-text" type="text" name="deposit" value="${product.deposit}" /> 
 
 			<div class="input-title">물품 카테고리</div>
 			 <div class="category-div">

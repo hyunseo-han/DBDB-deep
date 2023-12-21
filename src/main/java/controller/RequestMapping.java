@@ -30,6 +30,9 @@ public class RequestMapping {
         // 물건 상세 보기 
         mappings.put("/product/view", new ViewProductController());
         
+        // 물건 대여하기
+        mappings.put("/product/order", new OrderController());
+        
         // 회원가입, 로그인, 로그아
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
         mappings.put("/user/login", new LoginController());
