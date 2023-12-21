@@ -37,7 +37,10 @@ public class RequestMapping {
         mappings.put("/product/view", new ViewProductController());
         
         // 물건 대여하기
-        mappings.put("/product/order", new OrderController());
+        mappings.put("/product/order", new RentController());
+        // 물건 대여 확정 페이지
+        mappings.put("/rent/confirmRent", new RentController());
+        
         
         // 회원가입, 로그인, 로그아웃  
         mappings.put("/user/login/form", new ForwardController("/user/loginForm.jsp"));
@@ -54,6 +57,7 @@ public class RequestMapping {
         mappings.put("/mypage/rentproduct", new RentProductsController());
         
         // 물건 등록
+        mappings.put("/product/addProductForm", new ForwardController("/product/addProductForm.jsp"));
         mappings.put("/product/create", new ProductController());
         
         // 물건 삭제
