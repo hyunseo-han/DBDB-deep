@@ -2,18 +2,25 @@ package model;
 
 import java.time.LocalDate;
 
-public class Rent {
-    private int rent_id;
-    private int cstm_id;
-    private int prdt_id;
-    private int status;
+public class RentInfo {
+    private int rent_id; //자동생
+    private int cstm_id; //
+    private int prdt_id; //
+    private int status; 
     private LocalDate start_day;
     private LocalDate end_day;
     private int rental_fee;
     
-    public Rent(int rent_id, int cstm_id, int prdt_id, int status, LocalDate start_day, LocalDate end_day,
-            int rental_fee) {
-        super();
+    // Product 정보
+    private String title;
+    private String photo;
+    private String address;
+    
+    // Owner 정보
+    private String ownerName; //닉네임 말고 찐 이름
+    
+    public RentInfo(int rent_id, int cstm_id, int prdt_id, int status, LocalDate start_day, LocalDate end_day,
+            int rental_fee, String title, String photo, String address, String ownerName) {
         this.rent_id = rent_id;
         this.cstm_id = cstm_id;
         this.prdt_id = prdt_id;
@@ -21,9 +28,31 @@ public class Rent {
         this.start_day = start_day;
         this.end_day = end_day;
         this.rental_fee = rental_fee;
+        this.title = title;
+        this.photo = photo;
+        this.address = address;
+        this.ownerName = ownerName;
     }
     
-    public int getRent_id() {
+    
+    
+    public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
+
+	public int getRent_id() {
         return rent_id;
     }
     public void setRent_id(int rent_id) {
@@ -65,4 +94,28 @@ public class Rent {
     public void setRental_fee(int rental_fee) {
         this.rental_fee = rental_fee;
     }
+
+
+
+	public String getPhoto() {
+		return photo;
+	}
+
+
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 }
