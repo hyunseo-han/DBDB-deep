@@ -65,6 +65,11 @@ public class UserManager {
             
             return user;
         }
+    
+    // 이메일로 유저 찾기 
+    public User findUserByEmail(String email) throws SQLException {
+        return userDAO.findUserByEmail(email);
+    }
 
     public UserDAO getUserDAO() {
         return this.userDAO;
