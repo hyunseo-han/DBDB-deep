@@ -5,9 +5,6 @@
 <head>
 <title>DBDB-deep 로그인</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/css/global.css'/>">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/user/login.css'/>">
 <script>
@@ -34,24 +31,23 @@ function login() {
 </script>
 </head>
 <body>
-	<div>
-	<form name="form" method="POST" action="<c:url value='/user/login' />"> 
-	<p class="lo">Login</p>
-	<span class="input-wrapper">
-    	<input class="rectangle1" name="email" type="text" placeholder="이메일">
-	</span>
-	<span class="input-wrapper">
-    	<input class="rectangle2" name="password" type="password" placeholder="비밀번호 입력">
-	</span>
+	<div class="container">
+		<form name="form" method="POST" action="<c:url value='/user/login' />">
+			<p class="lo">Login</p>
+			<input class="rectangle1" name="email" type="text" placeholder="이메일">
+			<input class="rectangle2" name="password" type="password"
+				placeholder="비밀번호 입력"> 
+				<div class="ctr">
+			<input id="greySignup" type="button" value="회원가입"
+				onClick="userCreate('<c:url value='/user/register'/>')"> 
+				<span style="display: inline-block; width: 50px;"></span>
+				 <input id="greypassword" type="button" value="비밀번호 찾기"> </div>
+			<button class="greenRec" value="로그인" onClick="login()"
+				style="color: #05B70C">
+				<span id="greenrecintext">로그인</span>
 
-    <input id="greySignup" type="button" value="회원가입"
-			onClick="userCreate('<c:url value='/user/register'/>')">
-    <a href="#" class="greypassword">비밀번호찾기</a>
-    
-      <button class="greenRec" value="로그인" onClick="login()" style="color:#05B70C">
-        <span id="greenrecintext">로그인</span>
-    </button>
-    </form>
-    </div>
+			</button>
+		</form>
+	</div>
 </body>
 </html>

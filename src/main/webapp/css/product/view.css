@@ -133,3 +133,36 @@
 .update-buttons button:hover {
     background-color: #4cae4c;
 }
+
+.order-title {
+	color: #212529;
+	font-style: normal;
+	font-size: 40px;
+	font-weight: bold;
+	line-height: normal;
+	
+	border: 1px solid #05b70c;
+    padding-bottom: 10px;
+    border-width: 0 0 2px;
+    width: 1000px;
+	margin : 20px;
+}
+
+.select-date {
+	color: #212529;
+    font-style: normal;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: normal;
+    margin : 30px;
+	
+}
+
+#start_day, #end_day {
+	width: 200px;        
+    height: 35px;        
+    font-size: 19px;     
+    padding: 5px 10px; 
+    margin-left: 15px;  
+	
+}

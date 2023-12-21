@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Product;
+import model.User;
 import model.dao.JDBCUtil;
 
 public class ProductDAO {
@@ -130,4 +131,68 @@ public class ProductDAO {
         }
         return null; // 상품을 찾지 못한 경우 null 반환
     }
+
+    
+    // 물건 검색 
+    public List<Product> searchProducts(String keyword) throws SQLException  {
+        List<Product> productList = new ArrayList<>();
+        String query = "SELECT * FROM product WHERE title LIKE ?";
+        jdbcUtil.setSqlAndParameters(query, new Object[] {"%" + keyword + "%"});
+
+        try {
+            ResultSet rs = jdbcUtil.executeQuery();
+            while (rs.next()) {
+                Product product = new Product(
+                    rs.getInt("productId"),
+                    rs.getInt("regular_price"),
+                    rs.getInt("rental_fee"),
+                    rs.getString("description"),
+                    rs.getInt("deposit"),
+                    rs.getString("product_photo"),
+                    rs.getString("address"),
+                    rs.getString("detail_address"),
+                    rs.getBoolean("is_borrowed"),
+                    rs.getInt("customerId"),
+                    rs.getString("title"),
+                    rs.getString("category")
+                );
+                productList.add(product);
+            }
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }finally {
+            jdbcUtil.close();
+        }
+        return productList;
+
+    }
+    
+    // 물건 아이디로 주인 찾기
+   public User findUserById(int productId) throws SQLException {
+       String query = "SELECT * FROM CUSTOMER c, PRODUCT p WHERE c.customerId = p.customerId and productId = ?";
+       Object[] param = new Object[]{productId};
+       User user = null;
+       
+       jdbcUtil.setSqlAndParameters(query, param);
+       
+       try {
+           ResultSet rs = jdbcUtil.executeQuery();
+           
+           if(rs.next()) {
+               user = new User();       
+               user.setName(rs.getString("name"));
+               user.setManner_score(rs.getInt("manner_score"));
+           } 
+           
+           return user;
+       } catch (Exception ex) {
+           ex.printStackTrace();
+           return user;
+       }finally {
+           jdbcUtil.close();
+       }
+
+       
+   }
 }
