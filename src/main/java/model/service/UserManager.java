@@ -69,4 +69,8 @@ public class UserManager {
     public UserDAO getUserDAO() {
         return this.userDAO;
     }
+    
+    public User findUserById(int productId) throws SQLException {
+        return userDAO.findUserById(productId);
+    }
 }

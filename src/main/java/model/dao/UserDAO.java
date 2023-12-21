@@ -131,6 +131,34 @@ public class UserDAO {
         }
         return null;
     }
+    
+    // 물건 아이디로 주인 찾기
+   public User findUserById(int productId) throws SQLException {
+       String query = "SELECT * FROM CUSTOMER c, PRODUCT p WHERE c.customerId = p.customerId and productId = ?";
+       Object[] param = new Object[]{productId};
+       User user = null;
+       
+       jdbcUtil.setSqlAndParameters(query, param);
+       
+       try {
+           ResultSet rs = jdbcUtil.executeQuery();
+           
+           if(rs.next()) {
+               user = new User();       
+               user.setName(rs.getString("name"));
+               user.setManner_score(rs.getInt("manner_score"));
+           } 
+           
+           return user;
+       } catch (Exception ex) {
+           ex.printStackTrace();
+           return user;
+       }finally {
+           jdbcUtil.close();
+       }
+
+       
+   }
 	
 	//마이페이지 개발 하면
 	//update

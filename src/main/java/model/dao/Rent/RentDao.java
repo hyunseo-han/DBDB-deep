@@ -1,6 +1,12 @@
 package model.dao.Rent;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 import model.Product;
 import model.Rent;
@@ -43,30 +49,33 @@ public class RentDao {
         return result;
     }
     
-//    // 빌린 물건 rent 테이블에 추가
-//    public int addRent(Product product, User customer, LocalDate endDate) {
-//        int result = 0;
-//        LocalDate today = LocalDate.now();
-//        
-//        StringBuilder query = new StringBuilder();
-//        query.append("INSERT INTO RENT (status, borrow_start_day, borrow_end_day, productId, CustomerId, rental_fee "); //
-//        query.append("VALUES (?, ?, ?, ?, ?, ?)");
-//        
-//        Object[] params = new Object[]{1, today, endDate, product.getProductId(), customer.getCustomerId(), product.getRentalFee()};
-//        
-//        jdbcUtil.setSqlAndParameters(query.toString(), params);
-//        
-//        try {
-//            result = jdbcUtil.executeUpdate();
-//            jdbcUtil.commit(); // 트랜잭션 commit 실행
-//        } catch (Exception ex) {
-//            jdbcUtil.rollback();    // 트랜잭션 rollback 실행
-//            ex.printStackTrace();
-//        } finally {          
-//            jdbcUtil.close();
-//        }
-//        return result;
-//    }
+    // 대여 내역 날짜 출력을 위해...
+    public List<Rent> getDateById(int productId) throws SQLException {
+        List<Rent> rents = new ArrayList<>();
+        String sql = "SELECT * FROM RENT WHERE PRODUCTID = ?";
+
+        jdbcUtil.setSqlAndParameters(sql, new Object[] { productId });
+
+        try {
+            ResultSet rs = jdbcUtil.executeQuery();
+            while (rs.next()) {
+                Rent rent = new Rent(
+                    rs.getInt("RENTID"),
+                    rs.getInt("CUSTOMERID"),
+                    rs.getInt("PRODUCTID"),
+                    rs.getInt("STATUS"),
+                    rs.getDate("BORROW_START_DAY").toLocalDate(),
+                    rs.getDate("BORROW_END_DAY").toLocalDate(),
+                    rs.getInt("RENTAL_FEE")
+                );
+                rents.add(rent);
+            }
+        } finally {
+            jdbcUtil.close();
+        }
+        Collections.sort(rents, Comparator.comparing(Rent::getStart_day));
+        return rents;
+    }
     
     // 빌려진 물건 상태 변경 (대여됨)
     public int modifyProductrent(Product product) {

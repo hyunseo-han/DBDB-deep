@@ -1,5 +1,8 @@
 package model.service;
 
+import java.sql.SQLException;
+import java.util.List;
+
 import model.Rent;
 import model.dao.Product.ProductDAO;
 import model.dao.Rent.RentDao;
@@ -22,6 +25,10 @@ public class RentManager {
     
     public int addRent(Rent rent) {
         return rentDAO.addRent(rent);     
+    }
+    
+    public List<Rent> getDateById(int productId) throws SQLException {
+        return rentDAO.getDateById(productId);        
     }
 
 }

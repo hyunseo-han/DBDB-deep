@@ -43,7 +43,6 @@ public class OrderController implements Controller {
         String productIdStr = request.getParameter("productId");
         String customerIdStr = request.getParameter("customerId");
 
-        // 로그 찍기
         logger.info("Received productId: {}", productIdStr);
         logger.info("Received customerId: {}", customerIdStr);
        
@@ -59,17 +58,13 @@ public class OrderController implements Controller {
         
         try {
             rentManager.addRent(rent);  
-            return "redirect:/product/list";
+            return "redirect:/product/list"; // 추후 대여 확정 페이지로 수
         } catch (Exception e) {
             logger.error("Error ordering product", e);
             request.setAttribute("error", "물품 대여 중 오류가 발생했습니다.");
             
             return "redirect:/product/list"; // 대여 실패 시 상품 리스트 페이지로 리디렉션
         }
-        
-        
-        
-//        return "redirect:/product/list";
                
     }
 

@@ -13,20 +13,54 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/product/view.css'/>">
 <script>
-function checkDate() {
-    if (rentForm.start_day.value == "") {
-        alert("대여 시작일을 선택하십시오.");
-       myform.title.focus();
-        return false;
-    } 
-    else if (rentForm.end_day.value == "") {
-        alert("대여 종료일을 선택하십시오.");
-       myform.title.focus();
-        return false;
-    } 
-    myform.submit();
-}
+    var rentsArray = [
+        <c:forEach var="rent" items="${rents}" varStatus="status">
+            {
+                startDay: new Date("${rent.start_day}"),
+                endDay: new Date("${rent.end_day}")
+            }<c:if test="${!status.last}">,</c:if>
+        </c:forEach>
+    ];
+
+    function checkDate() {
+        if (document.rentForm.start_day.value == "") {
+            alert("대여 시작일을 선택하십시오.");
+            document.rentForm.start_day.focus();
+            return false;
+        } 
+        else if (document.rentForm.end_day.value == "") {
+            alert("대여 종료일을 선택하십시오.");
+            document.rentForm.end_day.focus();
+            return false;
+        } 
+        return true;
+    }
+
+    function checkOverlap(selectedStartDate, selectedEndDate) {
+        for (var i = 0; i < rentsArray.length; i++) {
+            var rent = rentsArray[i];
+            if (selectedStartDate <= rent.endDay && selectedEndDate >= rent.startDay) {
+                return true; // 중복되는 날짜 발견
+            }
+        }
+        return false; // 중복되는 날짜 없음
+    }
+
+    function validateForm() {
+        if (checkDate()) {
+            var selectedStartDate = new Date(document.getElementById('start_day').value);
+            var selectedEndDate = new Date(document.getElementById('end_day').value);
+            if (checkOverlap(selectedStartDate, selectedEndDate)) {
+                alert("이미 예약된 대여 날짜입니다. 다른 날짜를 선택해주세요.");
+                return false;
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
 </script>
+
 </head>
 
 <body>
@@ -106,12 +140,24 @@ function checkDate() {
 						   <label for="end_day">대여 종료 날짜:</label> 
 	                        <input type="date" id="end_day" name="end_day" required>				
 						</div>
-						<!-- 대여하기 버튼 -->
+						<!-- 대여 불가능 날짜 보여주기 -->
+						<c:if test="${not empty rents}">
+							<div class = "show-date-wrapper">
+							  <div class="show-title">❌ 대여 불가능 날짜 ❌</div>
+							  <div class="description">⚠️ 아래는 다른 사용자들이 이 물품의 대여를 약속한 날짜입니다. 
+							     해당 기간에는 대여가 불가능하니 참고하세요!
+							  </div>
+	                            <ul>
+	                                <c:forEach var="rent" items="${rents}">
+	                                    <li>${rent.start_day}부터 ${rent.end_day}까지</li>
+	                                </c:forEach>
+	                            </ul>					
+							</div>					    
+						</c:if>
 						<div class="product-buttons">
-							<button type="submit" onClick="checkDate()">대여하기</button>
+							<button type="submit" onClick="return validateForm()">대여하기</button>
 						</div>
 				</form>
-
 			</c:otherwise>
 		</c:choose>
 	</div>
