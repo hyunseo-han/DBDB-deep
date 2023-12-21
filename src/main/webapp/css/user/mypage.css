@@ -1,0 +1,116 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.container .header-text {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin-top: 30px;
+	font-family: Pretendard;
+	color: #000000;
+	text-align: center;
+	font-size: 48px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+
+.container .green-wrapper {
+	display: flex;
+	flex-direction: column;
+	margin-top: 30px;
+	background: rgba(51, 182, 57, 0.54);
+	width: 1280px;
+	height: 292px;
+	flex-shrink: 0;
+}
+
+.container .card-icon {
+	margin-left: 37px;
+}
+
+.container .green-wrapper .wrapper {
+	display: flex;
+	align-items: center;
+	margin-top: 60px;
+}
+
+.container .info-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 30px;
+}
+
+
+.container .name-div {
+	display: flex;
+	align-items: center;
+	color: #000;
+	font-size: 35.039px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.container .name {
+	color: #000;
+	text-align: center;
+	font-family: Pretendard;
+	font-size: 42.047px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+.container .email-div {
+	display: flex;
+	margin-top: 13px;
+	color: #000;
+	font-family: Pretendard;
+	font-size: 18.551px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.container .manner-div {
+	display: flex;
+	color: #000;
+	margin-top: 58px;
+	margin-left: 37px;
+	text-align: center;
+	font-family: Pretendard;
+	font-size: 31.062px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.container .menu-wrapper {
+	margin-top: 100px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+.container .menu-div {
+	width: 278.497px;
+	color: #000;
+	text-align: center;
+	font-family: Pretendard;
+	font-size: 35px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+
+	text-decoration: underline;
+	text-decoration-thickness : 8px;
+	text-decoration-color: #05B70C;
+	text-underline-position: under;
+}

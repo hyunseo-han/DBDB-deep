@@ -20,9 +20,9 @@
 	<div class="screen">
 
 		<div class="div">
-		   <a href="<c:url value='/product/list'/>">
-                <div class="head">빌려중고야?</div>
-            </a>
+			<a href="<c:url value='/product/list'/>">
+				<div class="head">빌려중고야?</div>
+			</a>
 
 			<div class="top">
 				<div class="wrapper">
@@ -48,7 +48,18 @@
 				<div class="btn">
 					<div class="name-div">
 						<div class="name">${sessionScope.name}</div>
-						님
+						님 
+						
+						<!-- 	마이페이지  -->
+						<a class="mypage" href="<c:url value='/mypage'/>">  <img class="person-icon"
+							src="<c:url value='/images/product/person.svg'/>" />
+						</a> 
+						
+						<!-- 장바구니  -->
+						<a class="cart" href="<c:url value="/user/cartItem?customerId=${customerId}"/>"> <img class="cart-icon"
+							src="<c:url value='/images/cartItem/cart.png'/>" />
+						</a>
+
 					</div>
 					<a class="go-addForm"
 						href="<c:url value='/product/addProductForm'/>"> 물품 등록</a>
@@ -83,9 +94,9 @@
 				</c:choose>
 			</div>
 		</div>
-     <c:set var="customerId" value="${sessionScope.customerId}" />
+		<c:set var="customerId" value="${sessionScope.customerId}" />
 		<a href="<c:url value="/user/cartItem?customerId=${customerId }"/>">장바구니로가라</a>
 	</div>
-	
+
 </body>
 </html>

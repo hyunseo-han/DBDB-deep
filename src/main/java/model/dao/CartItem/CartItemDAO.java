@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.CartItem;
+import model.Product;
 import model.dao.JDBCUtil;
 
 public class CartItemDAO {
@@ -14,30 +15,46 @@ public class CartItemDAO {
         jdbcUtil = new JDBCUtil(); // JDBCUtil 객체 생성
     }
 
-//  고객 장바구니 조회 
-    public List<CartItem> getCartItem(int customerId) throws SQLException {
-
-        String sql = "SELECT * FROM CARTITEM WHERE CUSTOMERID = ?";
-
+//  고객 장바구니 조회              
+    public List<Product> getCartItem(int customerId) throws SQLException {
+    	List<Product> list = new ArrayList<>(); 
+    	    
+	    String sql = "SELECT * "
+	    		+ "FROM cartItem c "
+	    		+ "INNER JOIN product p ON c.productId = p.productId "
+	    		+ "WHERE c.customerId = ?";
+    	    
         jdbcUtil.setSqlAndParameters(sql, new Object[] { customerId });
 
         try {
-            ResultSet rs = jdbcUtil.executeQuery();
-            List<CartItem> items = new ArrayList<>();
-            while (rs.next()) {
-                CartItem item = new CartItem(rs.getInt("CUSTOMERID"), rs.getInt("PRODUCTID"), rs.getInt("QUANTITY"),
-                        rs.getInt("RENTAL_FEE"));
-                items.add(item);
+        	 ResultSet rs = jdbcUtil.executeQuery();
+
+             while (rs.next()) {
+                 Product product = new Product(
+                		 rs.getInt("productId"),
+                         rs.getInt("regular_price"),
+                         rs.getInt("rental_fee"),
+                         rs.getString("description"),
+                         rs.getInt("deposit"),
+                         rs.getString("product_photo"),
+                         rs.getString("address"),
+                         rs.getString("detail_address"),
+                         rs.getBoolean("is_borrowed"),
+                         rs.getInt("customerId"),
+                         rs.getString("title"),
+                         rs.getString("category")
+                 );
+                list.add(product);
             }
-            return items;
+         
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
             jdbcUtil.close();
-        }
-        return null;
+        }   
+        return list;
     }
-
+    
 //    장바구니 아이템 저장 
     public int addCartItem(CartItem item) throws SQLException {
         String sql = "INSERT INTO CartItem (customerId, productId, quantity, rental_fee) VALUES (?, ?, ?, ?)";
@@ -47,7 +64,6 @@ public class CartItemDAO {
 
         try {
             int result = jdbcUtil.executeUpdate();
-            System.out.println(result+"%%%%%%%%%%%%%%%");
             return result;
         } catch (Exception ex) {
             jdbcUtil.rollback();
@@ -61,7 +77,7 @@ public class CartItemDAO {
 
 //    장바구니 아이템 삭제 
     public int deleteCartItem(int customerId, int productId) throws SQLException {
-        String sql = "DELETE FROM CARTITEM WHERE CUSTOMERID = ? AND PRODUCTID = ?";
+        String sql = "DELETE FROM cartItem WHERE customerId = ? AND productId = ?";
         jdbcUtil.setSqlAndParameters(sql, new Object[] {customerId, productId});
 
         try {
