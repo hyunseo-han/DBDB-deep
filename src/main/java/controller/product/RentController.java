@@ -17,20 +17,22 @@ import model.dao.Rent.RentDao;
 import model.service.ProductManager;
 import model.service.RentManager;
 
-public class OrderController implements Controller {
+public class RentController implements Controller {
     private ProductDAO productDAO;
     private RentDao rentDAO;
-    private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
+    private static final Logger logger = LoggerFactory.getLogger(RentController.class);
 
-    public OrderController() {
+    public RentController() {
         this.productDAO = new ProductDAO();
         this.rentDAO =  new RentDao();
     }
     
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        System.out.println("execute 진입");
         if(request.getMethod().equals("POST")) { 
             // 빌리기
+            logger.info("Executing OrderController");
             return rentProduct(request, response);         
           }
         else    {return "";}
