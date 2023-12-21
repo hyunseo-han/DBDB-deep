@@ -1,13 +1,13 @@
 package model;
 
-import java.util.List;
+//import java.util.List;
 
 public class CartItem {
     private int customerId;
     private int productId;
     private int quantity;
     private int rentalFee;
-    private List<CartItem> cartList;
+//    private List<CartItem> cartList;
     
     public CartItem() {}
     
@@ -49,11 +49,12 @@ public class CartItem {
                 + ", rentalFee=" + rentalFee + "]";
     }
 
-    public List<CartItem> getCartList() {
-        return cartList;
-    }
-
-    public void setCartList(List<CartItem> cartList) {
-        this.cartList = cartList;
-    }
+//    public List<CartItem> getCartList() {
+//    	return null;
+////        return cartList;
+//    }
+//
+//    public void setCartList(List<CartItem> cartList) {
+//        this.cartList = null;
+//    }
 }

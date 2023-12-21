@@ -68,6 +68,9 @@
 
 			</div>
 		</div>
+     <c:set var="customerId" value="${sessionScope.customerId}" />
+		<a href="<c:url value="/user/cartItem?customerId=${customerId }"/>">장바구니로가라</a>
 	</div>
+	
 </body>
 </html>

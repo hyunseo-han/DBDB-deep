@@ -21,8 +21,10 @@
 				src="<c:url value='/images/addProductForm/Vector.svg'/>" />
 			</a>
 			<div class="header-text">물품 상세 보기</div>
+			<a href="<c:url value='/user/cartItem/add?id=${product.productId }&rentalFee=${product.rentalFee}'/>">
 			<img class="cart-icon"
 				src="<c:url value='/images/addProductForm/simple-line-icons_basket.svg'/>" />
+			</a>
 		</div>
 
 		<div class="product-image">

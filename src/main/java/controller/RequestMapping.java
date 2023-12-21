@@ -5,6 +5,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import controller.cartItem.AddCartItemController;
+import controller.cartItem.CartItemController;
 import controller.product.*;
 import controller.user.CheckDuplicateUserController;
 import controller.user.LoginController;
@@ -44,6 +46,12 @@ public class RequestMapping {
         //물건 수정
         mappings.put("/product/update", new UpdateProductController());
         logger.info("Initialized Request Mapping!");
+        
+        //장바구니
+//        mappings.put("/user/cartItem", new CartItemController());
+        mappings.put("/user/cartItem", new ForwardController("/user/cartItem.jsp"));
+        
+        mappings.put("/user/cartItem/add", new AddCartItemController());
     } 
 
     public Controller findController(String uri) {	
