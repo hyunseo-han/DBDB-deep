@@ -12,6 +12,7 @@ import controller.user.CheckDuplicateUserController;
 import controller.user.LoginController;
 import controller.user.LogoutController;
 import controller.user.RegisterUserController;
+import controller.mypage.OrderController;
 
 public class RequestMapping {
     private static final Logger logger = LoggerFactory.getLogger(DispatcherServlet.class);
@@ -43,7 +44,6 @@ public class RequestMapping {
         mappings.put("/user/logout", new LogoutController());
         
         // 물건 등록
-        mappings.put("/product/addProductForm", new ForwardController("/product/addProductForm.jsp"));
         mappings.put("/product/create", new ProductController());
         
         // 물건 삭제
@@ -53,6 +53,9 @@ public class RequestMapping {
         mappings.put("/product/update", new UpdateProductController());
         logger.info("Initialized Request Mapping!");
         
+        //현서수정 
+        mappings.put("/mypage/borrowedProduct", new OrderController());
+      
         //장바구니
 //        mappings.put("/user/cartItem", new CartItemController());
         mappings.put("/user/cartItem", new ForwardController("/user/cartItem.jsp"));
