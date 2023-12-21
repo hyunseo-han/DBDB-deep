@@ -31,4 +31,7 @@ public class RentManager {
         return rentDAO.getDateById(productId);        
     }
 
+    public Rent findRentById(int rentId) throws SQLException {
+        return rentDAO.findRentById(rentId);
+    }
 }

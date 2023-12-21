@@ -20,34 +20,42 @@ public class RentDao {
         jdbcUtil = new JDBCUtil(); // JDBCUtil 객체 생성
     }
     
-    // 빌린 물건 rent 테이블에 추가
+    
+    
+    
     public int addRent(Rent rent) {
-        int result = 0;
+        int result = -1;
         
-        StringBuilder query = new StringBuilder();
-        query.append("INSERT INTO RENT (RENTID, STATUS, BORROW_START_DAY, BORROW_END_DAY, PRODUCTID, CUSTOMERID, RENTAL_FEE) "); //
-        query.append("VALUES (?, ?, ?, ?, ?, ?, ?)");
-        System.out.println("customerId : " + rent.getCstm_id());
-        System.out.println("productId : " + rent.getPrdt_id());
+        String query = "INSERT INTO RENT (STATUS, BORROW_START_DAY, BORROW_END_DAY, PRODUCTID, CUSTOMERID, RENTAL_FEE) VALUES (?, ?, ?, ?, ?, ?)";
+        String maxQuery = "SELECT MAX(rentId) FROM RENT";
         
-        
-        Object[] params = new Object[]{rent.getRent_id(), rent.getStatus(), rent.getStart_day(), rent.getEnd_day(), rent.getPrdt_id(), rent.getCstm_id(), rent.getRental_fee()};
+        Object[] params = new Object[]{rent.getStatus(), rent.getStart_day(), rent.getEnd_day(), rent.getPrdt_id(), rent.getCstm_id(), rent.getRental_fee()};
         
         jdbcUtil.setSqlAndParameters(query.toString(), params);
         
         try {
-            result = jdbcUtil.executeUpdate();
-            if (result > 0)
+            result = jdbcUtil.executeUpdate();          
+            if (result > 0) {
                 jdbcUtil.commit(); // 트랜잭션 commit 실행
+
+                // 새로 생성된 rentId를 가져오는 코드
+                jdbcUtil.setSqlAndParameters(maxQuery, null);
+                ResultSet res = jdbcUtil.executeQuery();
+                if(res.next()) {
+                    result = res.getInt(1);
+                }               
+            }
+            return result;
         } catch (Exception ex) {
-            System.out.println("대여 실패 ");
             ex.printStackTrace();
             jdbcUtil.rollback();    // 트랜잭션 rollback 실행      
         } finally {          
             jdbcUtil.close();
         }
-        return result;
+        return -1; // 실패했을 때 -1 반환
     }
+
+    
     
     // 대여 내역 날짜 출력을 위해...
     public List<Rent> getDateById(int productId) throws SQLException {
@@ -76,6 +84,37 @@ public class RentDao {
         Collections.sort(rents, Comparator.comparing(Rent::getStart_day));
         return rents;
     }
+    
+    public Rent findRentById(int rentId) throws SQLException {
+        Rent rent = null;
+        String sql = "SELECT * FROM RENT WHERE RENTID = ?";
+        
+        jdbcUtil.setSqlAndParameters(sql, new Object[] { rentId });
+        
+        try {
+            ResultSet rs = jdbcUtil.executeQuery();
+            
+            if (rs.next()) {
+                rent = new Rent(
+                    rs.getInt("RENTID"),
+                    rs.getInt("CUSTOMERID"),
+                    rs.getInt("PRODUCTID"),
+                    rs.getInt("STATUS"),
+                    rs.getDate("BORROW_START_DAY").toLocalDate(),
+                    rs.getDate("BORROW_END_DAY").toLocalDate(),
+                    rs.getInt("RENTAL_FEE"));    
+            } 
+            return rent;
+        } finally {
+            jdbcUtil.close();
+        }
+    }
+    
+    
+    
+    
+    
+    
     
     // 빌려진 물건 상태 변경 (대여됨)
     public int modifyProductrent(Product product) {
