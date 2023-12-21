@@ -32,11 +32,12 @@
 				${user.manner_score}</div>
 		</div>
 		<div class="menu-wrapper">
-		<!-- 	여기에 각 페이지 이동하는 거 연결 하기~~!!  -->
+			<!-- 	여기에 각 페이지 이동하는 거 연결 하기~~!!  -->
 			<div class="menu-div">빌린 물품 조회</div>
 
-			<div class="menu-div">빌려준 물품 조회</div>
-
+			<div class="menu-div">
+				<a class = "link" href="<c:url value='/mypage/rentproduct'/>">빌려준 물품 조회</a>
+			</div>
 			<div class="menu-div">장바구니 관리</div>
 		</div>
 	</div>

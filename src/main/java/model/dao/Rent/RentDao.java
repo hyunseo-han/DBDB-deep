@@ -10,6 +10,7 @@ import java.util.List;
 
 import model.Product;
 import model.Rent;
+import model.RentInfo;
 import model.User;
 import model.dao.JDBCUtil;
 
@@ -111,8 +112,21 @@ public class RentDao {
             jdbcUtil.close();
         }
         return result;
-    }
+    }    
     
+    public List<RentInfo> getRentListByUserId(String userId) {
+        List<RentInfo> rentList = null;
+        
+       String query = "SELECT rent.rent_id, rent.cstm_id, rent.prdt_id, rent.status, "
+               + "       rent.start_day, rent.end_day, rent.rental_fee,"
+               + "       p.title, p.product_photo, p.address,"
+               + "       c.name as ownerName"
+               + "FROM Rent rent"
+               + "JOIN Product p ON rent.prdt_id = p.product_id"
+               + "JOIN Customer c ON p.customer_id = c.customer_id"
+               + "WHERE rent.cstm_id = ?";
+        return rentList;
+    }
     
 
 }

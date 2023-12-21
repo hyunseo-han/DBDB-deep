@@ -19,6 +19,7 @@ public class RentInfo {
     // Owner 정보
     private String ownerName; //닉네임 말고 찐 이름
     
+    
     public RentInfo(int rent_id, int cstm_id, int prdt_id, int status, LocalDate start_day, LocalDate end_day,
             int rental_fee, String title, String photo, String address, String ownerName) {
         this.rent_id = rent_id;

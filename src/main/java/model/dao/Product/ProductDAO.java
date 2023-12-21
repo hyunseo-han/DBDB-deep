@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Product;
+import model.RentInfo;
 import model.User;
 import model.dao.JDBCUtil;
 
@@ -167,6 +168,5 @@ public class ProductDAO {
         return productList;
 
     }
-    
 
 }
