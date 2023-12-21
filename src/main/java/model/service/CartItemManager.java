@@ -2,6 +2,7 @@ package model.service;
 
 import model.dao.CartItem.CartItemDAO;
 import model.CartItem;
+import model.Product;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -19,7 +20,7 @@ public class CartItemManager {
 	}
 	
 	//장바구니 조회
-	public List<CartItem> getCartItem(int customerId){
+	public List<Product> getCartItem(int customerId){
 		try {
 			return cartItemDao.getCartItem(customerId);
 		}catch(SQLException e) {
