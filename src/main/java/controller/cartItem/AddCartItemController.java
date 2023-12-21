@@ -28,7 +28,7 @@ public class AddCartItemController implements Controller{
     	CartItem item = new CartItem(customerId, productId, 1, rentalFee);
     	
         boolean added = cartItemManager.addCartItem(item);
-        System.out.println(added + "@@@@@@@@@@@@@@@@@@@@");
+        //System.out.println(added + "@@@@@@@@@@@@@@@@@@@@");
         // 추가가 성공했을 경우 메인 페이지로 리다이렉트
         if (added) {
             return "redirect:/product/list";
