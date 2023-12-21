@@ -12,6 +12,21 @@
 	href="<c:url value='/css/global.css'/>">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='/css/product/view.css'/>">
+<script>
+function checkDate() {
+    if (rentForm.start_day.value == "") {
+        alert("대여 시작일을 선택하십시오.");
+       myform.title.focus();
+        return false;
+    } 
+    else if (rentForm.end_day.value == "") {
+        alert("대여 종료일을 선택하십시오.");
+       myform.title.focus();
+        return false;
+    } 
+    myform.submit();
+}
+</script>
 </head>
 
 <body>
@@ -76,7 +91,7 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<form method="POST" class="order-form" action="<c:url value='/product/order' />">
+				<form name="rentForm" method="POST" class="order-form" action="<c:url value='/product/order' />">
 					<input type="hidden" name="productId" value="${product.productId}" />
 					<input type="hidden" name="customerId" value="${sessionScope.customerId}" />
 					<div class="order-title">대여 기간 설정하기</div>
@@ -91,7 +106,7 @@
 						</div>
 						<!-- 대여하기 버튼 -->
 						<div class="product-buttons">
-							<button type="submit">대여하기</button>
+							<button type="submit" onClick="checkDate()">대여하기</button>
 						</div>
 				</form>
 
