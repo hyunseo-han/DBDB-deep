@@ -52,7 +52,7 @@ public class OrderController implements Controller {
             // borrowedProduct.jsp 페이지로 리다이렉션
             return "/user/borrowedProduct.jsp";
         }
-
+       
 
         // 고객이 빌린 물품 목록을 가져옵니다.
         List<RentInfo> borrowedItems = orderManager.getBorrowedItemsByCustomer(customerId);

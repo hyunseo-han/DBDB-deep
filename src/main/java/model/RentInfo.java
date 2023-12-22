@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class RentInfo {
@@ -34,8 +35,8 @@ public class RentInfo {
         this.address = address;
         this.manner_score = manner_score;
     }
-    
-   
+
+
 	public int getManner_score() {
 		return manner_score;
 	}

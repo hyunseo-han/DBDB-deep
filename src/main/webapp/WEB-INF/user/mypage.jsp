@@ -33,11 +33,7 @@
 		</div>
 		<div class="menu-wrapper">
 			<!-- 	여기에 각 페이지 이동하는 거 연결 하기~~!!  -->
-			<a href="<c:url value='/mypage/borrowedProduct'/>" class="menu-div">빌린
-				물품 조회</a>
-
-			<div class="menu-div">빌려준 물품 조회</div>
-
+			<a href="<c:url value='/mypage/borrowedProduct'/>" class="menu-div">빌린 물품 조회</a> 
 			<div class="menu-div">장바구니 관리</div>
 		</div>
 	</div>
