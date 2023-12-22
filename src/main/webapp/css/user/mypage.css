@@ -113,4 +113,13 @@
 	text-decoration-thickness : 8px;
 	text-decoration-color: #05B70C;
 	text-underline-position: under;
+	
+	.link {
+		text-decoration: none;
+	}
+	
+	.link:visit{ text-decoration: none;
+		color:#000;
+	}
 }
+

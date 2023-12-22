@@ -14,6 +14,7 @@ import controller.user.LoginController;
 import controller.user.LogoutController;
 import controller.user.MyPageController;
 import controller.user.RegisterUserController;
+import controller.user.RentProductsController;
 import controller.mypage.OrderController;
 
 public class RequestMapping {
@@ -51,6 +52,9 @@ public class RequestMapping {
         
         // 마이페이지 
         mappings.put("/mypage", new MyPageController());
+        
+        // 마이페이지 - 빌려준 물품 조회 
+        mappings.put("/mypage/rentproduct", new RentProductsController());
         
         // 물건 등록
         mappings.put("/product/addProductForm", new ForwardController("/product/addProductForm.jsp"));

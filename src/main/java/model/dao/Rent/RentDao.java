@@ -10,6 +10,7 @@ import java.util.List;
 
 import model.Product;
 import model.Rent;
+import model.RentInfo;
 import model.User;
 import model.dao.JDBCUtil;
 
@@ -150,8 +151,53 @@ public class RentDao {
             jdbcUtil.close();
         }
         return result;
-    }
+    }    
     
+    
+    //빌려준 물품 조회 (마이페이지) 
+    public List<RentInfo> getRentListByUserId(int loginUserId) {
+        List<RentInfo> rentList = new ArrayList<>();
+        
+        String query = "SELECT rent.RENTID, rent.CUSTOMERID, rent.PRODUCTID, rent.STATUS, "
+                + "rent.BORROW_START_DAY, rent.BORROW_END_DAY, rent.RENTAL_FEE, "
+                + "p.title, p.product_photo, p.address, "
+                + "c.name as borrowerName " // 대여한 사용자 이름
+                + "FROM Rent rent "
+                + "JOIN Product p ON rent.PRODUCTID = p.PRODUCTID "
+                + "JOIN Customer c ON rent.CUSTOMERID = c.CUSTOMERID " // 대여한 사용자 정보
+                + "WHERE p.CUSTOMERID = ?";
+
+        jdbcUtil.setSqlAndParameters(query, new Object[] { loginUserId });
+
+        try {
+            ResultSet rs = jdbcUtil.executeQuery(); 
+            
+            while (rs.next()) {
+                rentList.add(new RentInfo(
+                    rs.getInt("RENTID"),
+                    rs.getInt("CUSTOMERID"),
+                    rs.getInt("PRODUCTID"),
+                    rs.getInt("STATUS"),
+                    rs.getDate("BORROW_START_DAY").toLocalDate(),
+                    rs.getDate("BORROW_END_DAY").toLocalDate(),
+                    rs.getInt("RENTAL_FEE"),
+                    rs.getString("title"),
+                    rs.getString("product_photo"),
+                    rs.getString("address"),
+                    rs.getString("borrowerName") 
+                ));
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            jdbcUtil.close();
+        }
+
+        return rentList;
+    }
+
+
     
 
 }

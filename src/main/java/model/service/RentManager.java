@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import model.Rent;
+import model.RentInfo;
 import model.dao.Product.ProductDAO;
 import model.dao.Rent.RentDao;
 
@@ -33,5 +34,9 @@ public class RentManager {
 
     public Rent findRentById(int rentId) throws SQLException {
         return rentDAO.findRentById(rentId);
+    }
+    
+    public List<RentInfo> getRentListByUserId(int loginUserId) throws SQLException{
+        return rentDAO.getRentListByUserId(loginUserId);
     }
 }

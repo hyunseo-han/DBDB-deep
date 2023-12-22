@@ -17,8 +17,9 @@ public class RentInfo {
     private String address;
     
     // Owner 정보
-//    private String ownerName; //닉네임 말고 찐 이름
+    private String ownerName; //닉네임 말고 찐 이름
     private int manner_score; //별점 
+    
     
     public RentInfo(int rent_id, int cstm_id, int prdt_id, int status, LocalDate start_day, LocalDate end_day,
             int rental_fee, String title, String photo, String address, int manner_score) {
@@ -36,7 +37,23 @@ public class RentInfo {
     }
     
    
-	public int getManner_score() {
+	public RentInfo (int rent_id, int cstm_id, int prdt_id, int status, LocalDate start_day, LocalDate end_day,
+            int rental_fee, String title, String photo, String address, String ownerName ) {
+        this.rent_id = rent_id;
+        this.cstm_id = cstm_id;
+        this.prdt_id = prdt_id;
+        this.status = status;
+        this.start_day = start_day;
+        this.end_day = end_day;
+        this.rental_fee = rental_fee;
+        this.title = title;
+        this.photo = photo;
+        this.address = address;
+        this.ownerName = ownerName;
+    }
+
+
+    public int getManner_score() {
 		return manner_score;
 	}
 
@@ -56,13 +73,13 @@ public class RentInfo {
 		this.title = title;
 	}
 
-//	public String getOwnerName() {
-//		return ownerName;
-//	}
-//
-//	public void setOwnerName(String ownerName) {
-//		this.ownerName = ownerName;
-//	}
+	public String getOwnerName() {
+		return ownerName;
+	}
+
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
+	}
 
 	public int getRent_id() {
         return rent_id;
