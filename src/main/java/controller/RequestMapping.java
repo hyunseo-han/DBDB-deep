@@ -56,6 +56,12 @@ public class RequestMapping {
         // 마이페이지 - 빌려준 물품 조회 
         mappings.put("/mypage/rentproduct", new RentProductsController());
         
+       
+        //마이페이지 - 물건 조회 
+        mappings.put("/mypage/borrowedProduct", new OrderController());
+//        mappings.put("/mypage/mannerScore", new OrderController()); //지워도 되는가?
+        mappings.put("/mypage/returnProduct", new OrderController());
+        
         // 물건 등록
         mappings.put("/product/addProductForm", new ForwardController("/product/addProductForm.jsp"));
         mappings.put("/product/create", new ProductController());
@@ -67,10 +73,7 @@ public class RequestMapping {
         mappings.put("/product/update", new UpdateProductController());
         logger.info("Initialized Request Mapping!");
         
-        //마이페이지 물건조회 
-        mappings.put("/mypage/borrowedProduct", new OrderController());
-//        mappings.put("/mypage/mannerScore", new OrderController()); //지워도 되는가?
-        mappings.put("/mypage/returnProduct", new OrderController());
+
       
         //장바구니
         mappings.put("/user/cartItem", new CartItemController());

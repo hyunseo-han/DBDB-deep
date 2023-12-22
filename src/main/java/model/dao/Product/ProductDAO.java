@@ -1,19 +1,40 @@
 package model.dao.Product;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
 import model.Product;
 import model.RentInfo;
 import model.User;
 import model.dao.JDBCUtil;
+import model.dao.mybatis.mapper.MainMapper;
 
 public class ProductDAO {
     private JDBCUtil jdbcUtil;
+    private SqlSessionFactory sqlSessionFactory;
+
+
 
     public ProductDAO() {
         this.jdbcUtil = new JDBCUtil();
+        
+        String resource = "mybatis-config.xml";
+        InputStream inputStream;
+        try {
+            inputStream = Resources.getResourceAsStream(resource);
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e);
+        }
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
     }
 
     // 상품 등록
@@ -170,37 +191,15 @@ public class ProductDAO {
     }
 
     public List<Product> getProductsByCategory(String category) {
-        List<Product> productList = new ArrayList<>();
-        String query = "SELECT * FROM product WHERE category = ?";
-        jdbcUtil.setSqlAndParameters(query, new Object[] {category});
+        SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
-            ResultSet rs = jdbcUtil.executeQuery();
-            while (rs.next()) {
-                Product product = new Product(
-                    rs.getInt("productId"),
-                    rs.getInt("regular_price"),
-                    rs.getInt("rental_fee"),
-                    rs.getString("description"),
-                    rs.getInt("deposit"),
-                    rs.getString("product_photo"),
-                    rs.getString("address"),
-                    rs.getString("detail_address"),
-                    rs.getBoolean("is_borrowed"),
-                    rs.getInt("customerId"),
-                    rs.getString("title"),
-                    rs.getString("category")
-                );
-                productList.add(product);
-            }
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }finally {
-            jdbcUtil.close();
+            return sqlSession.getMapper(MainMapper.class).selectProductsByCategory(category);          
+        } finally {
+            sqlSession.close();
         }
-        return productList;
 
     }
 
+    
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="model.dao.mybatis.mapper.MainMapper">
+	<cache />
+
+<resultMap id="productResultMap" type="model.Product">
+<constructor>
+    <idArg column="productId" javaType="int"  />
+    <arg column="regular_price" javaType="int"  />
+    <arg column="rental_fee" javaType="int"  />
+    <arg column="description" javaType="string"  />
+    <arg column="deposit" javaType="int"  />
+    <arg column="product_photo" javaType="string"  />
+    <arg column="address" javaType="string" />
+    <arg column="detail_address" javaType="string" />
+    <arg column="is_borrowed" javaType="boolean"  />
+    <arg column="customerid" javaType="int"  />
+    <arg column="title" javaType="string"  />
+    <arg column="category" javaType="string"  /></constructor>
+</resultMap>
+
+	
+    <select id="selectProductsByCategory" parameterType="string" resultMap="productResultMap">
+        SELECT * FROM product WHERE category = #{category}
+    </select>
+     
+    
+</mapper>
