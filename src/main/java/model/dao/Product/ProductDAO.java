@@ -190,6 +190,7 @@ public class ProductDAO {
 
     }
 
+    // 목록 카테고리 조회 
     public List<Product> getProductsByCategory(String category) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
