@@ -70,8 +70,9 @@
 				src="<c:url value='/images/addProductForm/Vector.svg'/>" />
 			</a>
 			<div class="header-text">물품 상세 보기</div>
-			<a href="<c:url value='/user/cartItem/add?id=${product.productId }&rentalFee=${product.rentalFee}'/>">
-			<img class="cart-icon"
+			<a
+				href="<c:url value='/user/cartItem/add?id=${product.productId }&rentalFee=${product.rentalFee}'/>">
+				<img class="cart-icon"
 				src="<c:url value='/images/addProductForm/simple-line-icons_basket.svg'/>" />
 			</a>
 		</div>
@@ -90,7 +91,9 @@
 			<p class="product-detail">${product.description}</p>
 
 			<p class="product-text">물품의 정가</p>
-			<p class="product-detail"><fmt:formatNumber value="${product.regularPrice}" pattern="#,##0원" /></p>
+			<p class="product-detail">
+				<fmt:formatNumber value="${product.regularPrice}" pattern="#,##0원" />
+			</p>
 
 			<p class="product-text">대여비</p>
 			<p class="product-detail">
@@ -99,7 +102,9 @@
 
 
 			<p class="product-text">보증금</p>
-			<p class="product-detail"><fmt:formatNumber value="${product.deposit}" pattern="#,##0원" /></p>
+			<p class="product-detail">
+				<fmt:formatNumber value="${product.deposit}" pattern="#,##0원" />
+			</p>
 
 			<p class="product-text">물품 카테고리</p>
 			<p class="category">${product.category}</p>
@@ -108,9 +113,10 @@
 			<p class="product-text">대여 진행 장소</p>
 			<p class="product-detail">${product.address}
 				${product.detailAddress}</p>
-				
+
 			<p class="product-text">제공자 매너점수</p>
-            <p class="product-detail">${customer.name}님 ${customer.manner_score}점</p>
+			<p class="product-detail">${customer.name}님
+				${customer.manner_score}점</p>
 
 
 		</div>
@@ -127,36 +133,39 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<form name="rentForm" method="POST" class="order-form" action="<c:url value='/product/order' />">
+				<form name="rentForm" method="POST" class="order-form"
+					action="<c:url value='/product/order' />">
 					<input type="hidden" name="productId" value="${product.productId}" />
-					<input type="hidden" name="customerId" value="${sessionScope.customerId}" />
+					<input type="hidden" name="customerId"
+						value="${sessionScope.customerId}" />
 					<div class="order-title">대여 기간 설정하기</div>
-					
-						<div class="select-date">
-							<label for="start_day">대여 시작 날짜 </label> 
-		                    <input type="date" id="start_day" name="start_day" required>
-						</div>					
-						<div class="select-date">
-						   <label for="end_day">대여 종료 날짜:</label> 
-	                        <input type="date" id="end_day" name="end_day" required>				
+
+					<div class="select-date">
+						<label for="start_day">대여 시작 날짜 </label> <input type="date"
+							id="start_day" name="start_day" required>
+					</div>
+					<div class="select-date">
+						<label for="end_day">대여 종료 날짜:</label> <input type="date"
+							id="end_day" name="end_day" required>
+					</div>
+					<!-- 대여 불가능 날짜 보여주기 -->
+					<c:if test="${not empty rents}">
+						<div class="show-date-wrapper">
+							<div class="show-title">❌ 대여 불가능 날짜 ❌</div>
+							<div class="description">⚠️ 아래는 다른 사용자들이 이 물품의 대여를 약속한
+								날짜입니다. 해당 기간에는 대여가 불가능하니 참고하세요!</div>
+							<ul>
+								<c:forEach var="rent" items="${rents}">
+									<c:if test="${rent.status == 1}">
+										<li>${rent.start_day}부터${rent.end_day}까지</li>
+									</c:if>
+								</c:forEach>
+							</ul>
 						</div>
-						<!-- 대여 불가능 날짜 보여주기 -->
-						<c:if test="${not empty rents}">
-							<div class = "show-date-wrapper">
-							  <div class="show-title">❌ 대여 불가능 날짜 ❌</div>
-							  <div class="description">⚠️ 아래는 다른 사용자들이 이 물품의 대여를 약속한 날짜입니다. 
-							     해당 기간에는 대여가 불가능하니 참고하세요!
-							  </div>
-	                            <ul>
-	                                <c:forEach var="rent" items="${rents}">
-	                                    <li>${rent.start_day}부터 ${rent.end_day}까지</li>
-	                                </c:forEach>
-	                            </ul>					
-							</div>					    
-						</c:if>
-						<div class="product-buttons">
-							<button type="submit" onClick="return validateForm()">대여하기</button>
-						</div>
+					</c:if>
+					<div class="product-buttons">
+						<button type="submit" onClick="return validateForm()">대여하기</button>
+					</div>
 				</form>
 			</c:otherwise>
 		</c:choose>
