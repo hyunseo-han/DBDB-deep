@@ -153,19 +153,49 @@ public class RentDao {
         return result;
     }    
     
-    public List<RentInfo> getRentListByUserId(String userId) {
-        List<RentInfo> rentList = null;
-        
-       String query = "SELECT rent.rent_id, rent.cstm_id, rent.prdt_id, rent.status, "
-               + "       rent.start_day, rent.end_day, rent.rental_fee,"
-               + "       p.title, p.product_photo, p.address,"
-               + "       c.name as ownerName"
-               + "FROM Rent rent"
-               + "JOIN Product p ON rent.prdt_id = p.product_id"
-               + "JOIN Customer c ON p.customer_id = c.customer_id"
-               + "WHERE rent.cstm_id = ?";
+    
+    //빌려준 물품 조회 (마이페이지) 
+    public List<RentInfo> getRentListByUserId(int loginUserId) {
+        List<RentInfo> rentList = new ArrayList<>();
+
+        String query = "SELECT rent.RENTID, rent.CUSTOMERID, rent.PRODUCTID, rent.STATUS, "
+                       + "rent.BORROW_START_DAY, rent.BORROW_END_DAY, rent.RENTAL_FEE, "
+                       + "p.title, p.product_photo, p.address, "
+                       + "c.name as ownerName "
+                       + "FROM Rent rent "
+                       + "JOIN Product p ON rent.PRODUCTID = p.PRODUCTID "
+                       + "JOIN Customer c ON p.CUSTOMERID = c.CUSTOMERID "
+                       + "WHERE rent.CUSTOMERID = ?";
+
+        jdbcUtil.setSqlAndParameters(query, new Object[] { loginUserId });
+
+        try {
+            ResultSet rs = jdbcUtil.executeQuery(); 
+            while (rs.next()) {
+                rentList.add(new RentInfo(
+                    rs.getInt("RENTID"),
+                    rs.getInt("CUSTOMERID"),
+                    rs.getInt("PRODUCTID"),
+                    rs.getInt("STATUS"),
+                    rs.getDate("BORROW_START_DAY").toLocalDate(),
+                    rs.getDate("BORROW_END_DAY").toLocalDate(),
+                    rs.getInt("RENTAL_FEE"),
+                    rs.getString("title"),
+                    rs.getString("product_photo"),
+                    rs.getString("address"),
+                    rs.getString("ownerName")
+                ));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            jdbcUtil.close();
+        }
+
         return rentList;
     }
+
+
     
 
 }

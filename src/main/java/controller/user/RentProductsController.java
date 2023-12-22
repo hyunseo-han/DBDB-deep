@@ -13,15 +13,17 @@ public class RentProductsController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
-        String userId = UserSessionUtils.getLoginUserId(session);
-        
-        RentDao rentDao = new RentDao();
+        int loginUserId = (int) session.getAttribute("customerId");
+        System.out.println("로그인된 사용자 ID: " + loginUserId); 
 
-        List<RentInfo> rentProducts = rentDao.getRentListByUserId(userId);
+        RentDao productDao = new  RentDao();
+        List<RentInfo> rentProducts = productDao.getRentListByUserId(loginUserId);
+
+        System.out.println("빌려준 상품 수: " + rentProducts.size()); 
 
         request.setAttribute("rentProducts", rentProducts);
 
         return "/user/rentProduct.jsp"; 
     }
-
 }
+

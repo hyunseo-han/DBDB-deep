@@ -67,8 +67,11 @@ public class RequestMapping {
         mappings.put("/product/update", new UpdateProductController());
         logger.info("Initialized Request Mapping!");
         
-        //현서수정 
+        //마이페이지 물건조회 
         mappings.put("/mypage/borrowedProduct", new OrderController());
+//        mappings.put("/mypage/mannerScore", new OrderController()); //지워도 되는가?
+        mappings.put("/mypage/returnProduct", new OrderController());
+        mappings.put("mypage/lendProduct", new OrderController());
       
         //장바구니
         mappings.put("/user/cartItem", new CartItemController());
