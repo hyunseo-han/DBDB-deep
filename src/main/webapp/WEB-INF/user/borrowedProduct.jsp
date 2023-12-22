@@ -17,10 +17,15 @@
 </head>
 <body>
 	<div class="header">
-		<div class="headText">
-			<b>${sessionScope.name}</b>님이 빌린 물품
-		</div>
-	</div>
+        <div class="left-container">
+            <div class="headText">
+                <b>${sessionScope.name}</b>님이 빌린 물품
+            </div>
+        </div>
+        <div class="right-container">
+            <a href="/DBDB-deep/mypage" class="mypage-link">마이페이지</a>
+        </div>
+    </div>
 
 	<div class="container">
 		<c:forEach var="item" items="${borrowedItems}">
