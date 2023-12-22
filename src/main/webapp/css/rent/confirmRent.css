@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+body {
+    background-color: #EAEAEA;
+	
+}
+
+.confirm-container {
+	width: 100%;
+    margin: 0 auto;
+    /* background-color: #fff; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #EAEAEA; */
+}
+
+.confirm-container .header {
+	background-color: #05b70c;
+    display: flex;
+    width: 100%;
+    height: 110px;
+    margin-bottom: 100px;
+    justify-content: center;
+    align-items: center;	
+}
+
+.header .header-text {
+    color: white;
+    font-size: 45px;
+    font-weight: 900;
+    text-align: center;
+    margin: auto;
+}
+
+.confirm-container .rent-detail {
+	background-color: #fff;
+	width: 60%;
+	height: 950px;	
+	padding: 50px;
+    margin: auto;
+		
+}
+
+.rent-detail .check-icon {
+	height: 120px;
+    width: 120px;
+    margin-bottom: 40px;
+}
+
+.product-name {
+	font-size: 55px;
+	font-weight: 900;
+	/* margin-bottom: 65px; */
+}
+
+.detail-title {
+	font-size: 37px;
+    font-weight: 800;
+    margin-bottom: 15px;
+	
+}
+
+.detail-content {
+	font-size: 34px;
+	font-weight: 600;
+	margin-bottom: 50px;
+	padding-left: 45px;
+	
+}
+
+.rent-detail-title {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+    margin: auto;
+    margin-bottom: 95px;
+}
+
+.rent-detail-content {
+	margin-left: 250px;
+}
+
+.return-list-btn {
+    background-color: #05b70c;
+    width: 400px;
+    height: 82px;
+    border-radius: 1em;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
