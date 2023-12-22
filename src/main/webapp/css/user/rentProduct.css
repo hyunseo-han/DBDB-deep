@@ -1,0 +1,131 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.container .header {
+	display: flex;
+	width: 1280px;
+	height: 134px;
+	flex-shrink: 0;
+	background: rgba(51, 182, 57, 0.54);
+	margin-bottom: 85px;
+
+}
+
+.container .name-wrapper {
+	display: flex;
+	color: #000;
+	font-family: Pretendard;
+	font-size: 35.039px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	align-items: center;
+	margin-left: 55px;
+}
+
+.container .name-div {
+	color: #000;
+	text-align: center;
+	font-family: Pretendard;
+	font-size: 42.047px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+
+.container .product-container {
+	display: flex;
+	width: 836px;
+	height: 123px;
+	flex-shrink: 0;
+	fill: #FFF;
+	box-shadow: 0px 4px 4px 2px #05B70C inset;
+	border-radius: 10px;
+	margin-bottom: 35px;
+}
+
+.container .product-img {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 45px;
+}
+
+.container .product-image {
+	width: 106px;
+	height: 106px;
+}
+
+.container .title {
+	justify-content: center;
+	color: #212529;
+	font-family: Pretendard;
+	flex-shrink: 1;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px;
+	/* 150% */
+	letter-spacing: -0.02px;
+}
+
+.container .fee {
+	color: #212529;
+	font-family: Pretendard;
+	font-size: 15px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 22.5px;
+	/* 150% */
+
+}
+
+.container .info {
+	color: #212529;
+	font-family: Pretendard;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 19.5px;
+	/* 150% */
+}
+
+.container .wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 30px;
+}
+
+.container .wrapper2 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 30px;
+	margin-top: 28px;
+}
+
+.container .status {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	margin-left: 120px;
+
+	color: #000;
+	text-align: center;
+	font-family: Pretendard;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+
+}
+
+.container .status-img {
+	padding-right: 15px;
+}
