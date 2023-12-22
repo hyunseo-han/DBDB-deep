@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import model.RentInfo;
 
 public class OrderDAO {
@@ -119,5 +120,4 @@ public class OrderDAO {
             jdbcUtil.close();
         }
     }
- 
 }
