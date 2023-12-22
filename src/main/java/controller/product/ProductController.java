@@ -152,9 +152,20 @@ public class ProductController implements Controller {
     private String getProductList(HttpServletRequest request, HttpServletResponse response) {
         try {
             ProductManager productManager = ProductManager.getInstance();
-            List<Product> products = productManager.getAllProducts();
-            
-            request.setAttribute("products", products);
+           String category = request.getParameter("category");
+           
+           if(category==null) {
+               List<Product> products = productManager.getAllProducts();
+          
+               request.setAttribute("products", products);
+           }
+           else {
+               List<Product> products = productManager.getProductsByCategory(category);
+               
+               request.setAttribute("products", products);
+           }
+
+
             
             return "/product/list.jsp"; 
         } catch (Exception e) {

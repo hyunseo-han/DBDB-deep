@@ -38,25 +38,32 @@
 					</div>
 
 					<div class="category-wrapper">
-						<div class="category-text">주방가전</div>
-						<div class="category-text">오락기기</div>
-						<div class="category-text">촬영장비</div>
-						<div class="category-text">뷰티/헬스</div>
+						<a href="<c:url value='/product/list?category=주방가전'/>"><div
+								class="category-text">주방가전</div></a> <a
+							href="<c:url value='/product/list?category=오락기기'/>"><div
+								class="category-text">오락기기</div></a> <a
+							href="<c:url value='/product/list?category=촬영장비'/>"><div
+								class="category-text">촬영장비</div></a> <a
+							href="<c:url value='/product/list?category=뷰티/헬스'/>"><div
+								class="category-text">뷰티/헬스</div></a>
 					</div>
 				</div>
 
 				<div class="btn">
 					<div class="name-div">
 						<div class="name">${sessionScope.name}</div>
-						님 
-						
+						님
+
 						<!-- 	마이페이지  -->
-						<a class="mypage" href="<c:url value='/mypage'/>">  <img class="person-icon"
+						<a class="mypage" href="<c:url value='/mypage'/>"> <img
+							class="person-icon"
 							src="<c:url value='/images/product/person.svg'/>" />
-						</a> 
-						
+						</a>
+
 						<!-- 장바구니  -->
-						<a class="cart" href="<c:url value="/user/cartItem?customerId=${customerId}"/>"> <img class="cart-icon"
+						<a class="cart"
+							href="<c:url value="/user/cartItem?customerId=${customerId}"/>">
+							<img class="cart-icon"
 							src="<c:url value='/images/cartItem/cart.png'/>" />
 						</a>
 
