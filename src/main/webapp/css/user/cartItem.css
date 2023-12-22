@@ -19,8 +19,12 @@
 }
 
 .headerFont{
-	position:relative;
+	position:absolute;
 	font-size:25px;
+	margin-left:50px;
+	margin-top:10px;
+	margin-bottom:10px;
+	top:30px;
 }
 
 .font1{
@@ -32,6 +36,7 @@
 	position:relative;
 	display:flex;
 	align-items: center;
+	margin-left:100px;
 }
 
 .trash{
@@ -57,22 +62,61 @@
 .itemInfo{
 	display:flex;
 	align-items:center;
+	border-radius: 20px;
+}
+
+.cartInfo{
+	display:flex;
+	flex-direction: column;
+	margin-left:40px;
 }
 
 .itemImg{
 	width:106px;
 	height:106px;
 	margin:10px;
+	border-radius: 20px;
 }
 
 .priceFont{
 	font-weight:600;
+	font-size:15px;
+	margin-top:1px;
+}
+
+.itemFont{
+	margin-top:10px;
+	font-size:16px;
+	font-weight:regular;
+}
+
+.addressFont{
+	margin-top:0.5px;
+	font-size:13px;
+	font-weight:regular;
 }
 
 .itemFont,
 .priceFont,
 .addressFont {
     display: block;
-    margin-top: 10px;
 }
 
+.empty{
+	margin-top:100px;
+	text-align:center;
+}
+
+.emptyfont{
+	font-weight:medium;
+	font-size: 38px;
+}
+.emptyimg{
+	width:183px;
+	height:183px;
+}
+
+.emptyfont2{
+	font-size:29px;
+	font-weight:medium;
+}
