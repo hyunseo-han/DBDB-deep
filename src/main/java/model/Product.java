@@ -2,6 +2,7 @@ package model;
 
 public class Product {
     private int productId; //pk
+    private String title;
     private int regularPrice;
     private int rentalFee;
     private String description;
@@ -12,12 +13,11 @@ public class Product {
     private String detailAddress;
     private boolean isBorrowed;
     private int customerId; //fk
-    private String title;
     private String category;
     
-    public Product(int productId, int regularPrice, int rentalFee, String description, int deposit,
-            String productPhoto, String address, String detailAddress, boolean isBorrowed,
-            int customerId, String title, String category) {
+    public Product(Integer productId, Integer regularPrice, Integer rentalFee, String description, Integer deposit,
+            String productPhoto, String address, String detailAddress, Boolean isBorrowed,
+            Integer customerId, String title, String category) {
         super();
         this.productId = productId;
         this.regularPrice = regularPrice;

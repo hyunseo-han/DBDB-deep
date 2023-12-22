@@ -1,19 +1,40 @@
 package model.dao.Product;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
 import model.Product;
 import model.RentInfo;
 import model.User;
 import model.dao.JDBCUtil;
+import model.dao.mybatis.mapper.MainMapper;
 
 public class ProductDAO {
     private JDBCUtil jdbcUtil;
+    private SqlSessionFactory sqlSessionFactory;
+
+
 
     public ProductDAO() {
         this.jdbcUtil = new JDBCUtil();
+        
+        String resource = "mybatis-config.xml";
+        InputStream inputStream;
+        try {
+            inputStream = Resources.getResourceAsStream(resource);
+        } catch (IOException e) {
+            throw new IllegalArgumentException(e);
+        }
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
     }
 
     // 상품 등록
@@ -169,4 +190,17 @@ public class ProductDAO {
 
     }
 
+    // 목록 카테고리 조회 
+    public List<Product> getProductsByCategory(String category) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        try {
+            return sqlSession.getMapper(MainMapper.class).selectProductsByCategory(category);          
+        } finally {
+            sqlSession.close();
+        }
+
+    }
+
+    
 }
