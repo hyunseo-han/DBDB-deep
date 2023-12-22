@@ -7,23 +7,22 @@ import javax.servlet.http.HttpSession;
 import controller.Controller;
 import model.RentInfo;
 import model.dao.Rent.*;
+import model.service.RentManager;
 
 public class RentProductsController implements Controller {
-
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         int loginUserId = (int) session.getAttribute("customerId");
-        System.out.println("로그인된 사용자 ID: " + loginUserId); 
+        System.out.println("로그인된 사용자 ID: " + loginUserId);
 
-        RentDao productDao = new  RentDao();
-        List<RentInfo> rentProducts = productDao.getRentListByUserId(loginUserId);
+        RentManager rentManager = RentManager.getInstance();
+        List<RentInfo> rentProducts = rentManager.getRentListByUserId(loginUserId);
 
-        System.out.println("빌려준 상품 수: " + rentProducts.size()); 
+        System.out.println("빌려준 상품 수: " + rentProducts.size());
 
         request.setAttribute("rentProducts", rentProducts);
 
-        return "/user/rentProduct.jsp"; 
+        return "/user/rentProduct.jsp";
     }
 }
-

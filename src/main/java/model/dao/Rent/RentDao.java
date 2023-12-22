@@ -157,20 +157,21 @@ public class RentDao {
     //빌려준 물품 조회 (마이페이지) 
     public List<RentInfo> getRentListByUserId(int loginUserId) {
         List<RentInfo> rentList = new ArrayList<>();
-
+        
         String query = "SELECT rent.RENTID, rent.CUSTOMERID, rent.PRODUCTID, rent.STATUS, "
-                       + "rent.BORROW_START_DAY, rent.BORROW_END_DAY, rent.RENTAL_FEE, "
-                       + "p.title, p.product_photo, p.address, "
-                       + "c.name as ownerName "
-                       + "FROM Rent rent "
-                       + "JOIN Product p ON rent.PRODUCTID = p.PRODUCTID "
-                       + "JOIN Customer c ON p.CUSTOMERID = c.CUSTOMERID "
-                       + "WHERE rent.CUSTOMERID = ?";
+                + "rent.BORROW_START_DAY, rent.BORROW_END_DAY, rent.RENTAL_FEE, "
+                + "p.title, p.product_photo, p.address, "
+                + "c.name as borrowerName " // 대여한 사용자 이름
+                + "FROM Rent rent "
+                + "JOIN Product p ON rent.PRODUCTID = p.PRODUCTID "
+                + "JOIN Customer c ON rent.CUSTOMERID = c.CUSTOMERID " // 대여한 사용자 정보
+                + "WHERE p.CUSTOMERID = ?";
 
         jdbcUtil.setSqlAndParameters(query, new Object[] { loginUserId });
 
         try {
             ResultSet rs = jdbcUtil.executeQuery(); 
+            
             while (rs.next()) {
                 rentList.add(new RentInfo(
                     rs.getInt("RENTID"),
@@ -183,9 +184,10 @@ public class RentDao {
                     rs.getString("title"),
                     rs.getString("product_photo"),
                     rs.getString("address"),
-                    rs.getString("ownerName")
+                    rs.getString("borrowerName") 
                 ));
             }
+
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
