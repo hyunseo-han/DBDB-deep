@@ -77,7 +77,7 @@ public class OrderDAO {
 	    }
 	}
 
-	public void saveMannerScore(int customerId, int additionalScore, int productId) throws SQLException {
+	public void saveMannerScore(int customerId, int additionalScore, int productId, int rentId) throws SQLException {
 		// 먼저 기존의 매너 점수를 가져옵니다.
 		int currentScore = getMannerScore(productId);
 		int newScore = currentScore + additionalScore; // 기존 점수에 새로운 점수를 더한다

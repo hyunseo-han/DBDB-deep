@@ -44,9 +44,10 @@
 						</div>
 						<div class="item-dates">${item.start_day}~${item.end_day}</div>
 					</div>
-					<form action="/DBDB-deep/mypage/returnProduct" method="post">
+					<form action="/DBDB-deep/mypage/returnProduct?customerId=${item.cstm_id}&rentId=${item.rent_id}" method="post">
 						<input type="hidden" name="action" value="returnProduct" /><input
-							type="hidden" name="productId" value="${item.prdt_id}" /> <input
+							type="hidden" name="rentId" value="${item.rent_id}" /><input
+							type="hidden" name="productId" value="${item.prdt_id}" /><input
 							type="hidden" name="productName" value="${item.title}" /> <input
 							type="submit" value="반납" class="return-btn" />
 					</form>
