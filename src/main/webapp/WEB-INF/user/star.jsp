@@ -32,7 +32,7 @@
 		</div>
 	</div>
 
-	<form action="/DBDB-deep/mypage/borrowedProduct" method="post"
+	<form action="/DBDB-deep/mypage/borrowedProduct?" method="post"
 		onsubmit="return validateForm()">
 		<input type="hidden" name="action" value="returnStar" /> <input
 			type="hidden" name="productId" value="${param.productId}" /> <select

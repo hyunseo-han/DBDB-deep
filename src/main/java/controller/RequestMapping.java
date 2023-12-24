@@ -53,13 +53,12 @@ public class RequestMapping {
         // 마이페이지 
         mappings.put("/mypage", new MyPageController());
         
-        // 마이페이지 - 빌려준 물품 조회 
+        // 마이페이지 - 빌려준 물품 조회
         mappings.put("/mypage/rentproduct", new RentProductsController());
         
        
         //마이페이지 - 물건 조회 
         mappings.put("/mypage/borrowedProduct", new OrderController());
-//        mappings.put("/mypage/mannerScore", new OrderController()); //지워도 되는가?
         mappings.put("/mypage/returnProduct", new OrderController());
         
         // 물건 등록
