@@ -26,7 +26,7 @@
 ## 화면 구성 📺
 | 메인 페이지  |  물품 상세 페이지   |  빌려준 물품 페이지   |  빌린 물품 페이지  |  장바구니 페이지  | 
 | :-------: | :------------: | :------------: | :------------: |  :------------: |  
-|  <img width="300" src="https://github.com/mnbvcxzyj/DBDB-deep/assets/101444425/d7d84224-ff1d-414b-bb82-f7a3b0a1153a"/> |  <img width="300" src="https://github.com/mnbvcxzyj/DBDB-deep/assets/101444425/791e3072-7e53-4274-a4b8-dba06595e8fc"/>|  <img width="300" src=""/>|  <img width="300" src=""/>|  <img width="300" src="https://github.com/mnbvcxzyj/DBDB-deep/assets/101444425/816dfb66-7371-4efc-82b7-b1def9310fa1"/> | 
+|  <img width="300" src="https://github.com/mnbvcxzyj/DBDB-deep/assets/101444425/d7d84224-ff1d-414b-bb82-f7a3b0a1153a"/> |  <img width="300" src="https://github.com/mnbvcxzyj/DBDB-deep/assets/101444425/791e3072-7e53-4274-a4b8-dba06595e8fc"/>|  <img width="300" src="https://github.com/mnbvcxzyj/DBDB-deep/assets/101444425/cbc71b1d-acc5-4633-bb8f-22d7308f8d62"/>|  <img width="300" src="https://github.com/mnbvcxzyj/DBDB-deep/assets/101444425/3a9755aa-5485-43d2-80b0-75d9167ef80c)"/> |  <img width="300" src="https://github.com/mnbvcxzyj/DBDB-deep/assets/101444425/816dfb66-7371-4efc-82b7-b1def9310fa1"/> | 
 
 ---
 ## 주요 기능 📦
