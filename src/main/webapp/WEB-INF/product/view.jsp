@@ -39,11 +39,9 @@
     }
 
     function checkOverlap(selectedStartDate, selectedEndDate) {
-    	alert("checkoverlap");
         for (var i = 0; i < rentsArray.length; i++) {
             var rent = rentsArray[i];
             if (rent.status === 1 && selectedStartDate <= rent.endDay && selectedEndDate >= rent.startDay) {
-            	alert("checkoverlap 조건 충족 ");
                 return false; // 중복되는 날짜 발견
             }
         }
