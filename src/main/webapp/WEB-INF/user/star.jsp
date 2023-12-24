@@ -29,8 +29,8 @@
 	<div class="header">
 		<div class="headText">
 			<b>${productName}</b> 만족도 평가
-			<p>rentId: ${rentId}</p>
-			<p>productId: ${productId}</p>
+			<%-- <p>rentId: ${rentId}</p>
+			<p>productId: ${productId}</p> --%>
 		</div>
 	</div>
 
