@@ -46,8 +46,8 @@ public class OrderManager {
         orderDAO.updateProductStatus(productId, 0); // 상태를 0으로 변경
         System.out.println("상품넘버는  " + productId );
         
-        orderDAO.saveMannerScore(customerId, newMannerScore); // 누적된 점수 저장
-        System.out.println(customerId + " 그리고  ! " + newMannerScore);
+        orderDAO.saveMannerScore(customerId, newMannerScore, productId); // 매너점수 저장
+        //System.out.println(customerId + " 그리고  ! " + newMannerScore);
     }
     
     public void updateProductStatus(int productId, int status) throws SQLException {

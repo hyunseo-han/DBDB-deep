@@ -25,6 +25,7 @@ public class OrderController implements Controller {
             return "redirect:/user/loginForm.jsp";
         }
 
+        //이건 어디?
         if ("returnProduct".equals(action)) {
             int productId = Integer.parseInt(request.getParameter("productId"));
             String productName = request.getParameter("productName");
