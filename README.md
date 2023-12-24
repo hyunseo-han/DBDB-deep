@@ -16,8 +16,9 @@
 |   <img width="160px" src="https://avatars.githubusercontent.com/u/101444425?v=4"  />    |                      <img width="160px" src="https://avatars.githubusercontent.com/u/102174849?v=4" />    |                   <img width="160px" src="https://avatars.githubusercontent.com/u/80518843?v=4"/>   |                     <img width="160px" src="https://avatars.githubusercontent.com/u/80339766?v=4"/>
 |   [@mnbvcxzyj](https://github.com/mnbvcxzyj)   |    [@ParkSenn](https://github.com/ParkSenn)  | [@da-jeong](https://github.com/da-jeong)  | [@hyunseo-han](https://github.com/hyunseo-han) | 
 
-<br/>
 ---
+
+
 ## 프로젝트 소개
 안전한 거래인지 확신하지 못하는 불안함 속에서 금전적 거래를 해야 하는 부담감을 없애고 대화 없이 간단하게 물건을 **중고** 물품을 **빌려**주고 **대여**하는 서비스 입니다. 
 
