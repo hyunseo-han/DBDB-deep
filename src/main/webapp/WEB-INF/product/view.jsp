@@ -17,7 +17,8 @@
         <c:forEach var="rent" items="${rents}" varStatus="status">
             {
                 startDay: new Date("${rent.start_day}"),
-                endDay: new Date("${rent.end_day}")
+                endDay: new Date("${rent.end_day}"),
+                status: ${rent.status} // status 속성 추가
             }<c:if test="${!status.last}">,</c:if>
         </c:forEach>
     ];
@@ -38,9 +39,11 @@
     }
 
     function checkOverlap(selectedStartDate, selectedEndDate) {
+    	alert("checkoverlap");
         for (var i = 0; i < rentsArray.length; i++) {
             var rent = rentsArray[i];
             if (rent.status === 1 && selectedStartDate <= rent.endDay && selectedEndDate >= rent.startDay) {
+            	alert("checkoverlap 조건 충족 ");
                 return false; // 중복되는 날짜 발견
             }
         }
