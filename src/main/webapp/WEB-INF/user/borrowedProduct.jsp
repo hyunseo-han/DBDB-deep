@@ -33,7 +33,7 @@
 				<div class="item-container">
 					<div class="box">
 						<div class="item-img">
-							<img src="<c:url value='/upload/${item.photo}' />" alt="물품 이미지" />
+							<img class="item-imgs" src="<c:url value='/upload/${item.photo}' />" alt="물품 이미지" />
 						</div>
 						<div class="item-info">
 							<div class="item-name">${item.title}</div>
