@@ -58,8 +58,6 @@ public class OrderController implements Controller {
             return "/user/borrowedProduct.jsp";
         }
        
-
-        // 고객이 빌린 물품 목록을 가져옵니다.
         List<RentInfo> borrowedItems = orderManager.getBorrowedItemsByCustomer(customerId);
         request.setAttribute("borrowedItems", borrowedItems);
 

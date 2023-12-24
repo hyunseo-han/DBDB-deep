@@ -11,7 +11,7 @@ public class OrderDAO {
 	private JDBCUtil jdbcUtil = null;
 
 	public OrderDAO() {
-		jdbcUtil = new JDBCUtil(); // JDBCUtil 객체 생성
+		jdbcUtil = new JDBCUtil(); 
 	}
 
 	// 고객이 빌린 물품 조회
@@ -39,7 +39,7 @@ public class OrderDAO {
 				rentList.add(rent);
 			}
 		} finally {
-			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 닫기
+			jdbcUtil.close(); 
 		}
 		return rentList;
 	}
@@ -78,7 +78,6 @@ public class OrderDAO {
 	}
 
 	public void saveMannerScore(int customerId, int additionalScore, int productId, int rentId) throws SQLException {
-		// 먼저 기존의 매너 점수를 가져옵니다.
 		int currentScore = getMannerScore(productId);
 		int newScore = currentScore + additionalScore; // 기존 점수에 새로운 점수를 더한다
 
@@ -108,8 +107,8 @@ public class OrderDAO {
 	}
 
 	public void updateProductStatus(int rentId, int status) throws SQLException {
-		String sql = "UPDATE RENT SET STATUS = ? WHERE RENTID = ?"; // RENTID로 변경
-	    jdbcUtil.setSqlAndParameters(sql, new Object[] { status, rentId }); // productId를 rentId로 변경
+		String sql = "UPDATE RENT SET STATUS = ? WHERE RENTID = ?"; 
+	    jdbcUtil.setSqlAndParameters(sql, new Object[] { status, rentId }); 
 
 		try {
 			jdbcUtil.executeUpdate();

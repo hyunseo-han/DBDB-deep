@@ -33,15 +33,10 @@ public class OrderManager {
     }
     
     public void updateProductStatusAndMannerScore(int customerId, int rentId, int starRating, int productId) throws SQLException {
-        // DB에서 기존 매너 점수를 가져옵니다.
         int existingMannerScore = orderDAO.getMannerScore(customerId);
-        
-        // 새 점수를 더합니다.
         int newMannerScore = existingMannerScore + starRating;
 
-        // 상품 상태를 업데이트하고 매너 점수를 누적합니다.
-        orderDAO.updateProductStatus(rentId, 0); // 상태를 0으로 변경
-        
+        orderDAO.updateProductStatus(rentId, 0); 
         orderDAO.saveMannerScore(customerId, newMannerScore, productId, rentId); // 매너점수 저장
     }
     

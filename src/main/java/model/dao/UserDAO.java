@@ -8,7 +8,7 @@ public class UserDAO {
 	private JDBCUtil jdbcUtil = null;
 	
 	public UserDAO() {			
-		jdbcUtil = new JDBCUtil();	// JDBCUtil 객체 생성
+		jdbcUtil = new JDBCUtil();	
 	}
 
 	//회원가입
@@ -102,7 +102,6 @@ public class UserDAO {
         return false;
     } 
     
-    //여기 수정하기 Customer -> User
     public User findUserByEmail(String email) throws SQLException {
         User user = null;
         
@@ -156,7 +155,5 @@ public class UserDAO {
        }finally {
            jdbcUtil.close();
        }
-
-       
    }
 }
