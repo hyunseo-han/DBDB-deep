@@ -21,6 +21,7 @@
             }<c:if test="${!status.last}">,</c:if>
         </c:forEach>
     ];
+    console.log(rentsArray)
 
     function checkDate() {
         if (document.rentForm.start_day.value == "") {
@@ -40,10 +41,10 @@
         for (var i = 0; i < rentsArray.length; i++) {
             var rent = rentsArray[i];
             if (rent.status === 1 && selectedStartDate <= rent.endDay && selectedEndDate >= rent.startDay) {
-                return true; // 중복되는 날짜 발견
+                return false; // 중복되는 날짜 발견
             }
         }
-        return false; // 중복되는 날짜 없음
+        return true; // 중복되는 날짜 없음
     }
 
     function validateForm() {
@@ -155,7 +156,7 @@
 					        <div class="description">⚠️ 아래는 다른 사용자들이 이 물품의 대여를 약속한 날짜입니다. 해당 기간에는 대여가 불가능하니 참고하세요!</div>
 					        <ul>
 					            <c:forEach var="rent" items="${rents}">
-					                <!-- status가 1인 rent만 표시합니다. -->
+					                <!-- status가 1인 rent만 표시 -->
 					                <c:if test="${rent.status == 1}">
 					                    <li>${rent.start_day}부터${rent.end_day}까지</li>
 					                </c:if>
