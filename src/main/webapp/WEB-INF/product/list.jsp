@@ -44,8 +44,8 @@
 								class="category-text">오락기기</div></a> <a
 							href="<c:url value='/product/list?category=촬영장비'/>"><div
 								class="category-text">촬영장비</div></a> <a
-							href="<c:url value='/product/list?category=뷰티/헬스'/>"><div
-								class="category-text">뷰티/헬스</div></a>
+							href="<c:url value='/product/list?category=기타'/>"><div
+								class="category-text">기타</div></a>
 					</div>
 				</div>
 
