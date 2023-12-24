@@ -51,7 +51,7 @@
         if (checkDate()) {
             var selectedStartDate = new Date(document.getElementById('start_day').value);
             var selectedEndDate = new Date(document.getElementById('end_day').value);
-            if (checkOverlap(selectedStartDate, selectedEndDate)) {
+            if (checkOverlap(selectedStartDate, selectedEndDate) == false) {
                 alert("이미 예약된 대여 날짜입니다. 다른 날짜를 선택해주세요.");
                 return false;
             }
