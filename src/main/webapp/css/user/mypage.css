@@ -82,7 +82,7 @@
 .container .manner-div {
 	display: flex;
 	color: #000;
-	margin-top: 58px;
+	margin-top: 10px;
 	margin-left: 37px;
 	text-align: center;
 	font-family: Pretendard;
@@ -123,3 +123,18 @@
 	}
 }
 
+.list-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px; 
+    background-color: #05B70C; 
+    color: white; 
+    text-decoration: none; 
+    border-radius: 5px;
+    border: none; 
+    text-align: left;
+}
+
+.list-link:hover {
+    background-color: #048a0c; 
+}
