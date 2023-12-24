@@ -32,8 +32,7 @@
 				${user.manner_score}</div>
 		</div>
 		<div class="menu-wrapper">
-
-			<a href="<c:url value='/mypage/borrowedProduct'/>" class="menu-div">빌린 물품 조회</a> 
+			<a href="<c:url value='/mypage/borrowedProduct?customerId=${customerId}'/>" class="menu-div">빌린 물품 조회</a> 
 			<a class="menu-div"	href="<c:url value='/mypage/rentproduct'/>">빌려준 물품 조회</a> 
 			<a class="menu-div" href="<c:url value='/user/cartItem?customerId=${customerId}'/>">장바구니 관리 </a>
 		</div>

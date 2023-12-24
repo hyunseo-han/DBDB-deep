@@ -29,13 +29,17 @@
 	<div class="header">
 		<div class="headText">
 			<b>${productName}</b> 만족도 평가
+			<p>rentId: ${rentId}</p>
+			<p>productId: ${productId}</p>
 		</div>
 	</div>
 
-	<form action="/DBDB-deep/mypage/borrowedProduct" method="post"
+	<form action="/DBDB-deep/mypage/borrowedProduct?customerId=${customerId}" method="post"
 		onsubmit="return validateForm()">
 		<input type="hidden" name="action" value="returnStar" /> <input
-			type="hidden" name="productId" value="${param.productId}" /> <select
+			type="hidden" name="rentId" value="${rentId}" /> 
+			<input
+			type="hidden" name="productId" value="${productId}" /><select
 			name="starRating">
 			<option value="">선택하세요</option>
 			<option value="0">0</option>

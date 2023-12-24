@@ -26,8 +26,6 @@ public class OrderDAO {
 		jdbcUtil.setSqlAndParameters(sql, param);
 		List<RentInfo> rentList = new ArrayList<>();
 
-		System.out.println("OrderDAO에서 확인한 custoemerId: " + customerId);
-
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();
 
@@ -40,7 +38,6 @@ public class OrderDAO {
 						rs.getInt("MANNER_SCORE"));
 				rentList.add(rent);
 			}
-			System.out.println("실행이 되는갸?");
 		} finally {
 			jdbcUtil.close(); // ResultSet, PreparedStatement, Connection 닫기
 		}
@@ -80,10 +77,9 @@ public class OrderDAO {
 	    }
 	}
 
-	public void saveMannerScore(int customerId, int additionalScore, int productId) throws SQLException {
+	public void saveMannerScore(int customerId, int additionalScore, int productId, int rentId) throws SQLException {
 		// 먼저 기존의 매너 점수를 가져옵니다.
 		int currentScore = getMannerScore(productId);
-		System.out.println("기존의 매너스코어 " + currentScore + " 랍니다~~"); //ok
 		int newScore = currentScore + additionalScore; // 기존 점수에 새로운 점수를 더한다
 
 	
@@ -111,20 +107,18 @@ public class OrderDAO {
 
 	}
 
-	public void updateProductStatus(int productId, int status) throws SQLException {
-		String sql = "UPDATE RENT SET STATUS = ? WHERE PRODUCTID = ?";
-		jdbcUtil.setSqlAndParameters(sql, new Object[] { status, productId });
+	public void updateProductStatus(int rentId, int status) throws SQLException {
+		String sql = "UPDATE RENT SET STATUS = ? WHERE RENTID = ?"; // RENTID로 변경
+	    jdbcUtil.setSqlAndParameters(sql, new Object[] { status, rentId }); // productId를 rentId로 변경
 
 		try {
 			jdbcUtil.executeUpdate();
-			System.out.println("상태 " + status + "으로 업뎃 개같이 성공 ");
 			jdbcUtil.commit();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			jdbcUtil.rollback();
 			e.printStackTrace();
-			System.out.println("개같이 에러");
 		} finally {
 			jdbcUtil.close();
 		}
